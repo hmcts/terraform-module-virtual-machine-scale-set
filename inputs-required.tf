@@ -1,23 +1,70 @@
-variable "env" {
-  description = "Environment value."
+variable "vm_type" {
   type        = string
+  description = "The type of the vm scale set, either windows-scale-set or linux-scale-set"
 }
 
-variable "common_tags" {
-  description = "Common tag to be applied to resources."
+variable "vm_name" {
+  type        = string
+  description = "The name of the Virtual Machine Scale Set"
+}
+
+variable "vm_resource_group" {
+  type        = string
+  description = "The name of the resource group to deploy the virtual Machine Scale Set in."
+}
+
+variable "vm_admin_password" {
+  type        = string
+  sensitive   = true
+  description = "The Admin password for the virtual Machine Scale Set."
+}
+
+variable "vm_publisher_name" {
+  type        = string
+  description = "The publiser of the marketplace image to use."
+}
+
+variable "vm_offer" {
+  type        = string
+  description = "The offer of the marketplace image to use."
+}
+
+variable "vm_sku" {
+  type        = string
+  description = "The Virtual Machine Scale Set SKU for the Scale Set, such as Standard_F2"
+}
+
+variable "vm_image_sku" {
+  type        = string
+  description = "The SKU of the image to use."
+}
+
+
+variable "vm_version" {
+  type        = string
+  description = "The version of the image to use."
+}
+
+variable "vm_availabilty_zones" {
+  type        = list(any)
+  description = "The availability zones to deploy the VM in"
+}
+
+variable "network_interfaces" {
+  description = "One or more network_interface can be set here, at least one of the network_interface have to be primary"
+}
+variable "vm_instances" {
+  type        = number
+  description = "Number of VM instances required"
+}
+
+
+variable "computer_name_prefix" {
+  type        = string
+  description = "Enter Computer name prefix, it should be not more than 9 characters"
+}
+variable "tags" {
   type        = map(string)
+  description = "The tags to apply to the virtual Machine Scale Set and associated resources."
 }
 
-variable "product" {
-  description = "https://hmcts.github.io/glossary/#product"
-  type        = string
-}
-
-variable "project" {
-  description = "Project name - sds or cft."
-}
-
-variable "component" {
-  description = "https://hmcts.github.io/glossary/#component"
-  type        = string
-}
