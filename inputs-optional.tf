@@ -135,7 +135,7 @@ variable "dynatrace_hostgroup" {
 variable "dynatrace_server" {
   type        = string
   description = "The Dynatrace ActiveGate server URL."
-  default     = null
+  default     = ""
 }
 
 variable "dynatrace_tenant_id" {
@@ -177,7 +177,7 @@ variable "nessus_groups" {
 variable "install_azure_monitor" {
   type        = bool
   description = "Install Azure Monitor on the virtual machine."
-  default     = true
+  default     = false
 }
 
 variable "run_command" {
