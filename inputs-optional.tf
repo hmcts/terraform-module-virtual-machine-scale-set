@@ -129,7 +129,7 @@ variable "install_dynatrace_oneagent" {
 variable "dynatrace_hostgroup" {
   type        = string
   description = "The hostgroup to place the virtual machine in within DynaTrace"
-  default     = null
+  default     = ""
 }
 
 variable "dynatrace_server" {

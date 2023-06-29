@@ -83,7 +83,7 @@ An example can be found [here](https://github.com/hmcts/terraform-module-virtual
 | <a name="input_custom_image_id"></a> [custom\_image\_id](#input\_custom\_image\_id) | The ID of a custom image to use. | `string` | `""` | no |
 | <a name="input_custom_script_extension_name"></a> [custom\_script\_extension\_name](#input\_custom\_script\_extension\_name) | Overwrite custom script extension name label in bootstrap module. | `string` | `"HMCTSVMBootstrap"` | no |
 | <a name="input_dns_servers"></a> [dns\_servers](#input\_dns\_servers) | DNS servers to use, will override DNS servers set at the VNET level | `list(string)` | `null` | no |
-| <a name="input_dynatrace_hostgroup"></a> [dynatrace\_hostgroup](#input\_dynatrace\_hostgroup) | The hostgroup to place the virtual machine in within DynaTrace | `string` | `null` | no |
+| <a name="input_dynatrace_hostgroup"></a> [dynatrace\_hostgroup](#input\_dynatrace\_hostgroup) | The hostgroup to place the virtual machine in within DynaTrace | `string` | `""` | no |
 | <a name="input_dynatrace_server"></a> [dynatrace\_server](#input\_dynatrace\_server) | The Dynatrace ActiveGate server URL. | `string` | `null` | no |
 | <a name="input_dynatrace_tenant_id"></a> [dynatrace\_tenant\_id](#input\_dynatrace\_tenant\_id) | The Dynatrace tenant ID. | `string` | `null` | no |
 | <a name="input_dynatrace_token"></a> [dynatrace\_token](#input\_dynatrace\_token) | The token to use when communicating with the Dynatrace ActiveGate. | `string` | `null` | no |
