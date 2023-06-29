@@ -141,13 +141,13 @@ variable "dynatrace_server" {
 variable "dynatrace_tenant_id" {
   type        = string
   description = "The Dynatrace tenant ID."
-  default     = null
+  default     = ""
 }
 
 variable "dynatrace_token" {
   type        = string
   description = "The token to use when communicating with the Dynatrace ActiveGate."
-  default     = null
+  default     = ""
 }
 
 variable "nessus_install" {
