@@ -1,6 +1,5 @@
 module "windows-vm-ss" {
-  source = "../"
-
+  source               = "../"
   vm_type              = "windows-scale-set"
   vm_name              = "win-test-vmss"
   computer_name_prefix = "windatagw"
@@ -8,27 +7,21 @@ module "windows-vm-ss" {
   vm_sku               = "Standard_D4ds_v5"
   vm_admin_password    = random_string.vm_password.result
   vm_availabilty_zones = ["1"]
-
-  vm_publisher_name = "MicrosoftWindowsServer"
-  vm_offer          = "WindowsServer"
-  vm_image_sku      = "2022-Datacenter"
-  vm_version        = "latest"
-
-  vm_instances = 2
+  vm_publisher_name    = "MicrosoftWindowsServer"
+  vm_offer             = "WindowsServer"
+  vm_image_sku         = "2022-Datacenter"
+  vm_version           = "latest"
+  vm_instances         = 2
+  subnet_id            = data.azurerm_subnet.subnet.id
   network_interfaces = {
     nic0 = { name = "win-test-vmss-nic",
       primary        = true,
       ip_config_name = "win-test-vmss-ipconfig",
-    subnet_id = data.azurerm_subnet.subnet.id }
-
-
+    }
   }
-
   kv_name     = azurerm_key_vault.example-kv.name
   kv_rg_name  = azurerm_key_vault.example-kv.resource_group_name
   encrypt_ADE = true
-
-
   managed_disks = {
     datadisk1 = {
       storage_account_type = "Standard_LRS"
@@ -38,14 +31,12 @@ module "windows-vm-ss" {
       disk_caching         = "ReadWrite"
     }
   }
-
   tags = merge(module.ctags.common_tags, { expiresAfter = "3000-05-30" })
 }
 
 
 module "ctags" {
-  source = "git@github.com:hmcts/terraform-module-common-tags?ref=master"
-
+  source      = "git@github.com:hmcts/terraform-module-common-tags?ref=master"
   builtFrom   = "github.com/hmcts/testtest"
   environment = "sbox"
   product     = "mgmt"

@@ -52,7 +52,7 @@ resource "azurerm_windows_virtual_machine_scale_set" "windows_scale_set" {
       ip_configuration {
         name      = network_interface.value.ip_config_name
         primary   = try(network_interface.value.primary, false)
-        subnet_id = network_interface.value.subnet_id
+        subnet_id = var.subnet_id
       }
     }
   }
