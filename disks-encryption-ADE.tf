@@ -28,14 +28,14 @@ resource "random_string" "password" {
 }
 
 
-resource "azurerm_virtual_machine_extension" "vmextension" {
-  count                      = var.encrypt_ADE ? 1 : 0
-  name                       = "azure-disk-encrypt-${random_string.password.result}"
-  virtual_machine_id         = var.vm_type == "linux-scale-set" ? azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].id : azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].id
-  publisher                  = "Microsoft.Azure.Security"
-  type                       = var.vm_type == "linux-scale-set" ? "AzureDiskEncryptionForLinux" : "AzureDiskEncryption"
-  type_handler_version       = var.vm_type == "linux-scale-set" ? "1.1" : "2.2"
-  auto_upgrade_minor_version = true
+resource "azurerm_virtual_machine_scale_set_extension" "vmextension" {
+  count                        = var.encrypt_ADE ? 1 : 0
+  name                         = "azure-disk-encrypt-${random_string.password.result}"
+  virtual_machine_scale_set_id = var.vm_type == "linux-scale-set" ? azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].id : azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].id
+  publisher                    = "Microsoft.Azure.Security"
+  type                         = var.vm_type == "linux-scale-set" ? "AzureDiskEncryptionForLinux" : "AzureDiskEncryption"
+  type_handler_version         = var.vm_type == "linux-scale-set" ? "1.1" : "2.2"
+  auto_upgrade_minor_version   = true
 
   settings = jsonencode({
     "EncryptionOperation"    = "EnableEncryption"
@@ -46,9 +46,6 @@ resource "azurerm_virtual_machine_extension" "vmextension" {
     "KekVaultResourceId"     = data.azurerm_key_vault.enc_kv[0].id
     "VolumeType"             = "All"
   })
-
-
-  tags = var.tags
 
   depends_on = [module.vm-bootstrap]
 }

@@ -26,7 +26,7 @@ module "windows-vm-ss" {
 
   kv_name     = azurerm_key_vault.example-kv.name
   kv_rg_name  = azurerm_key_vault.example-kv.resource_group_name
-  encrypt_ADE = false
+  encrypt_ADE = true
 
 
   managed_disks = {
