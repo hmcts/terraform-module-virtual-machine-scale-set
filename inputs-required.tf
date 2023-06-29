@@ -31,7 +31,7 @@ variable "vm_offer" {
 
 variable "vm_sku" {
   type        = string
-  description = "The Virtual Machine Scale Set SKU for the Scale Set, such as Standard_F2"
+  description = "The Virtual Machine Scale Set SKU for the Scale Set, check allowed sku here https://tools.hmcts.net/confluence/display/DACS/D.1k+Azure+SKU+Standards+-+In+progress "
 }
 
 variable "vm_image_sku" {

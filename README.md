@@ -21,8 +21,8 @@ module "todo_resource_name" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | n/a |
-| <a name="provider_random"></a> [random](#provider\_random) | n/a |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.62.1 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.5.1 |
 
 ## Modules
 
@@ -100,7 +100,7 @@ module "todo_resource_name" {
 | <a name="input_vm_public_ip_address"></a> [vm\_public\_ip\_address](#input\_vm\_public\_ip\_address) | The public IP address to assign to the virtual machine. | `string` | `null` | no |
 | <a name="input_vm_publisher_name"></a> [vm\_publisher\_name](#input\_vm\_publisher\_name) | The publiser of the marketplace image to use. | `string` | n/a | yes |
 | <a name="input_vm_resource_group"></a> [vm\_resource\_group](#input\_vm\_resource\_group) | The name of the resource group to deploy the virtual Machine Scale Set in. | `string` | n/a | yes |
-| <a name="input_vm_sku"></a> [vm\_sku](#input\_vm\_sku) | The Virtual Machine Scale Set SKU for the Scale Set, such as Standard\_F2 | `string` | n/a | yes |
+| <a name="input_vm_sku"></a> [vm\_sku](#input\_vm\_sku) | The Virtual Machine Scale Set SKU for the Scale Set, check allowed sku here https://tools.hmcts.net/confluence/display/DACS/D.1k+Azure+SKU+Standards+-+In+progress | `string` | n/a | yes |
 | <a name="input_vm_type"></a> [vm\_type](#input\_vm\_type) | The type of the vm scale set, either windows-scale-set or linux-scale-set | `string` | n/a | yes |
 | <a name="input_vm_version"></a> [vm\_version](#input\_vm\_version) | The version of the image to use. | `string` | n/a | yes |
 
