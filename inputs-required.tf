@@ -32,6 +32,11 @@ variable "vm_offer" {
 variable "vm_sku" {
   type        = string
   description = "The Virtual Machine Scale Set SKU for the Scale Set, check allowed sku here https://tools.hmcts.net/confluence/display/DACS/D.1k+Azure+SKU+Standards+-+In+progress "
+
+  validation {
+    condition     = strcontains(var.vm_sku, "D2ds_v5") || strcontains(var.vm_sku, "D4ds_v5") || strcontains(var.vm_sku, "D8ds_v5") || strcontains(var.vm_sku, "D16ds_v5") || strcontains(var.vm_sku, "D32ds_v5") || strcontains(var.vm_sku, "E2ds_v5") || strcontains(var.vm_sku, "E4ds_v5") || strcontains(var.vm_sku, "E8ds_v5") || strcontains(var.vm_sku, "E16ds_v5") || strcontains(var.vm_sku, "E32ds_v5")
+    error_message = "The vm_sku value must be a valid sku, check allowed sku here https://tools.hmcts.net/confluence/display/DACS/D.1k+Azure+SKU+Standards+-+In+progress "
+  }
 }
 
 variable "vm_image_sku" {

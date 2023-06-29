@@ -1,19 +1,46 @@
-# terraform-module-template
+# terraform-module-virtual-machine-scale-set
+This module will allow you to deploy Linux or Windows virtual machine Scale Set on Azure.
 
-<!-- TODO fill in resource name in link to product documentation -->
-Terraform module for [Resource name](https://example.com).
 
 ## Example
+```terraform
+module "windows-vm-ss" {
+  source = "../"
 
-<!-- todo update module name
-```hcl
-module "todo_resource_name" {
-  source = "git@github.com:hmcts/terraform-module-postgresql-flexible?ref=master"
-  ...
+  vm_type              = "windows-scale-set"
+  vm_name              = "win-test-vmss"
+  computer_name_prefix = "windatagw"
+  vm_resource_group    = "update-management-center-test"
+  vm_sku               = "Standard_D4ds_v5"
+  vm_admin_password    = random_string.vm_password.result
+  vm_availabilty_zones = ["1"]
+  vm_publisher_name = "MicrosoftWindowsServer"
+  vm_offer          = "WindowsServer"
+  vm_image_sku      = "2022-Datacenter"
+  vm_version        = "latest"
+  vm_instances = 2
+  network_interfaces = {
+    nic0 = { name = "win-test-vmss-nic",
+      primary        = true,
+      ip_config_name = "win-test-vmss-ipconfig",
+    subnet_id = data.azurerm_subnet.subnet.id }
+  }
+  kv_name     = azurerm_key_vault.example-kv.name
+  kv_rg_name  = azurerm_key_vault.example-kv.resource_group_name
+  encrypt_ADE = true
+  managed_disks = {
+    datadisk1 = {
+      storage_account_type = "Standard_LRS"
+      disk_create_option   = "Empty"
+      disk_size_gb         = "128"
+      disk_lun             = "10"
+      disk_caching         = "ReadWrite"
+    }
+  }
+  tags = merge(module.ctags.common_tags, { expiresAfter = "3000-05-30" })
 }
-
 ```
-
+An example can be found [here](https://github.com/hmcts/terraform-module-virtual-machine-scale-set/tree/main/example).
 <!-- BEGIN_TF_DOCS -->
 
 
