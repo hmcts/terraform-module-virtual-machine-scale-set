@@ -123,7 +123,7 @@ variable "splunk_group" {
 variable "install_dynatrace_oneagent" {
   type        = bool
   description = "Install dynatrace oneagent on the virtual machine."
-  default     = true
+  default     = false
 }
 
 variable "dynatrace_hostgroup" {

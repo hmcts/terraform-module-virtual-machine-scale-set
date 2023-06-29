@@ -90,7 +90,7 @@ An example can be found [here](https://github.com/hmcts/terraform-module-virtual
 | <a name="input_encrypt_ADE"></a> [encrypt\_ADE](#input\_encrypt\_ADE) | Encrypt the disks using Azure Disk Encryption. | `bool` | `false` | no |
 | <a name="input_env"></a> [env](#input\_env) | n/a | `string` | `"test"` | no |
 | <a name="input_install_azure_monitor"></a> [install\_azure\_monitor](#input\_install\_azure\_monitor) | Install Azure Monitor on the virtual machine. | `bool` | `true` | no |
-| <a name="input_install_dynatrace_oneagent"></a> [install\_dynatrace\_oneagent](#input\_install\_dynatrace\_oneagent) | Install dynatrace oneagent on the virtual machine. | `bool` | `true` | no |
+| <a name="input_install_dynatrace_oneagent"></a> [install\_dynatrace\_oneagent](#input\_install\_dynatrace\_oneagent) | Install dynatrace oneagent on the virtual machine. | `bool` | `false` | no |
 | <a name="input_install_splunk_uf"></a> [install\_splunk\_uf](#input\_install\_splunk\_uf) | Insall splunk uniforwarder on the virtual machine. | `bool` | `false` | no |
 | <a name="input_ipconfig_name"></a> [ipconfig\_name](#input\_ipconfig\_name) | The name of the IPConfig to asssoicate with the NIC. | `string` | `null` | no |
 | <a name="input_kv_name"></a> [kv\_name](#input\_kv\_name) | The name ofthe KeyVault used to store the customer-managed key. | `string` | `null` | no |
