@@ -136,6 +136,7 @@ An example can be found [here](https://github.com/hmcts/terraform-module-virtual
 
 | Name | Description |
 |------|-------------|
+| <a name="output_principal_id"></a> [principal\_id](#output\_principal\_id) | n/a |
 | <a name="output_vm_id"></a> [vm\_id](#output\_vm\_id) | n/a |
 <!-- END_TF_DOCS -->
 
