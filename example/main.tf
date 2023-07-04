@@ -31,6 +31,14 @@ module "windows-vm-ss" {
       disk_caching         = "ReadWrite"
     }
   }
+
+  upgrade_mode = "Automatic"
+  automatic_os_upgrade_policy = {
+    policy = {
+      disable_automatic_rollback  = true,
+      enable_automatic_os_upgrade = true
+    }
+  }
   tags = merge(module.ctags.common_tags, { expiresAfter = "3000-05-30" })
 }
 

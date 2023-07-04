@@ -10,6 +10,7 @@ resource "azurerm_windows_virtual_machine_scale_set" "windows_scale_set" {
   zones                = var.vm_availabilty_zones
   custom_data          = var.custom_data
   computer_name_prefix = var.computer_name_prefix
+  upgrade_mode         = var.upgrade_mode
   source_image_reference {
     publisher = var.vm_publisher_name
     offer     = var.vm_offer
@@ -56,21 +57,30 @@ resource "azurerm_windows_virtual_machine_scale_set" "windows_scale_set" {
       }
     }
   }
+
+  dynamic "automatic_os_upgrade_policy" {
+    for_each = try(var.automatic_os_upgrade_policy, {})
+    content {
+      disable_automatic_rollback  = automatic_os_upgrade_policy.value.disable_automatic_rollback
+      enable_automatic_os_upgrade = automatic_os_upgrade_policy.value.enable_automatic_os_upgrade
+    }
+  }
 }
 
 
 resource "azurerm_linux_virtual_machine_scale_set" "linux_scale_set" {
-  count               = var.vm_type == "linux-scale-set" ? 1 : 0
-  name                = var.vm_name
-  resource_group_name = var.vm_resource_group
-  location            = var.vm_location
-  sku                 = var.vm_sku
-  instances           = var.vm_instances
-  admin_username      = var.vm_admin_name
-  admin_password      = var.vm_admin_password
-  zones               = var.vm_availabilty_zones
-  custom_data         = var.custom_data
-
+  count                = var.vm_type == "linux-scale-set" ? 1 : 0
+  name                 = var.vm_name
+  resource_group_name  = var.vm_resource_group
+  location             = var.vm_location
+  sku                  = var.vm_sku
+  instances            = var.vm_instances
+  admin_username       = var.vm_admin_name
+  admin_password       = var.vm_admin_password
+  zones                = var.vm_availabilty_zones
+  custom_data          = var.custom_data
+  computer_name_prefix = var.computer_name_prefix
+  upgrade_mode         = var.upgrade_mode
   source_image_reference {
     publisher = var.vm_publisher_name
     offer     = var.vm_offer
@@ -103,6 +113,14 @@ resource "azurerm_linux_virtual_machine_scale_set" "linux_scale_set" {
         primary   = try(network_interface.value.primary, false)
         subnet_id = network_interface.value.subnet_id
       }
+    }
+  }
+
+  dynamic "automatic_os_upgrade_policy" {
+    for_each = try(var.automatic_os_upgrade_policy, {})
+    content {
+      disable_automatic_rollback  = automatic_os_upgrade_policy.value.disable_automatic_rollback
+      enable_automatic_os_upgrade = automatic_os_upgrade_policy.value.enable_automatic_os_upgrade
     }
   }
 }

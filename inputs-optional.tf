@@ -261,3 +261,22 @@ variable "custom_script_extension_name" {
   type        = string
   default     = "HMCTSVMBootstrap"
 }
+
+variable "upgrade_mode" {
+  type        = string
+  description = "Specifies how Upgrades should be performed to Virtual Machine Instances. Possible values are Automatic, Manual and Rolling"
+  default     = "Manual"
+}
+
+variable "automatic_os_upgrade_policy" {
+  type = map(
+    object(
+      {
+        disable_automatic_rollback  = bool,
+        enable_automatic_os_upgrade = bool
+      }
+    )
+  )
+  description = "A map of automatic_os_upgrade_policy policy"
+  default     = {}
+}

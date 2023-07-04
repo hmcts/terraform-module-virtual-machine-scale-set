@@ -76,6 +76,7 @@ An example can be found [here](https://github.com/hmcts/terraform-module-virtual
 | <a name="input_accelerated_networking_enabled"></a> [accelerated\_networking\_enabled](#input\_accelerated\_networking\_enabled) | Enable accelerated networks on the NIC for the virtual machine. | `bool` | `false` | no |
 | <a name="input_additional_script_name"></a> [additional\_script\_name](#input\_additional\_script\_name) | The path to a script to run against the virtual machine. | `string` | `null` | no |
 | <a name="input_additional_script_uri"></a> [additional\_script\_uri](#input\_additional\_script\_uri) | URI of a publically accessible script to run against the virtual machine. | `string` | `null` | no |
+| <a name="input_automatic_os_upgrade_policy"></a> [automatic\_os\_upgrade\_policy](#input\_automatic\_os\_upgrade\_policy) | A map of automatic\_os\_upgrade\_policy policy | <pre>map(<br>    object(<br>      {<br>        disable_automatic_rollback  = bool,<br>        enable_automatic_os_upgrade = bool<br>      }<br>    )<br>  )</pre> | `{}` | no |
 | <a name="input_boot_diagnostics_enabled"></a> [boot\_diagnostics\_enabled](#input\_boot\_diagnostics\_enabled) | Whether to enable boot diagnostics. | `bool` | `true` | no |
 | <a name="input_boot_storage_uri"></a> [boot\_storage\_uri](#input\_boot\_storage\_uri) | The URI of the storage to use for boot diagnostics. | `string` | `null` | no |
 | <a name="input_computer_name_prefix"></a> [computer\_name\_prefix](#input\_computer\_name\_prefix) | Enter Computer name prefix, it should be not more than 9 characters | `string` | n/a | yes |
@@ -115,6 +116,7 @@ An example can be found [here](https://github.com/hmcts/terraform-module-virtual
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | Subnet ID where the VMSS going to deploy | `string` | n/a | yes |
 | <a name="input_systemassigned_identity"></a> [systemassigned\_identity](#input\_systemassigned\_identity) | Enable System Assigned managed identity for the virtual machine. | `bool` | `false` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | The tags to apply to the virtual Machine Scale Set and associated resources. | `map(string)` | n/a | yes |
+| <a name="input_upgrade_mode"></a> [upgrade\_mode](#input\_upgrade\_mode) | Specifies how Upgrades should be performed to Virtual Machine Instances. Possible values are Automatic, Manual and Rolling | `string` | `"Manual"` | no |
 | <a name="input_userassigned_identity_ids"></a> [userassigned\_identity\_ids](#input\_userassigned\_identity\_ids) | List of User Manager Identity IDs to associate with the virtual machine. | `list(string)` | `[]` | no |
 | <a name="input_vm_admin_name"></a> [vm\_admin\_name](#input\_vm\_admin\_name) | The name of the admin user. | `string` | `"VMAdmin"` | no |
 | <a name="input_vm_admin_password"></a> [vm\_admin\_password](#input\_vm\_admin\_password) | The Admin password for the virtual Machine Scale Set. | `string` | n/a | yes |
