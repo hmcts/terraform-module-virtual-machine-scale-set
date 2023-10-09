@@ -13,11 +13,6 @@ variable "vm_resource_group" {
   description = "The name of the resource group to deploy the virtual Machine Scale Set in."
 }
 
-variable "subnet_id" {
-  type        = string
-  description = "Subnet ID where the VMSS going to deploy"
-}
-
 variable "vm_admin_password" {
   type        = string
   sensitive   = true
