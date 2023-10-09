@@ -1,5 +1,12 @@
 module "windows-vm-ss" {
-  source               = "../"
+  source = "../"
+
+  providers = {
+    azurerm     = azurerm
+    azurerm.cnp = azurerm.cnp
+    azurerm.soc = azurerm.soc
+  }
+
   vm_type              = "windows-scale-set"
   vm_name              = "win-test-vmss"
   computer_name_prefix = "windatagw"
