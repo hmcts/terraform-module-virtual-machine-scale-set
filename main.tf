@@ -67,6 +67,8 @@ resource "azurerm_windows_virtual_machine_scale_set" "windows_scale_set" {
       enable_automatic_os_upgrade = automatic_os_upgrade_policy.value.enable_automatic_os_upgrade
     }
   }
+
+  tags = var.tags
 }
 
 
@@ -127,4 +129,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "linux_scale_set" {
       enable_automatic_os_upgrade = automatic_os_upgrade_policy.value.enable_automatic_os_upgrade
     }
   }
+
+  tags = var.tags
 }
