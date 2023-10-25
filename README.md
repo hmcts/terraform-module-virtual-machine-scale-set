@@ -48,8 +48,8 @@ An example can be found [here](https://github.com/hmcts/terraform-module-virtual
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.62.1 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.5.1 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | n/a |
+| <a name="provider_random"></a> [random](#provider\_random) | n/a |
 
 ## Modules
 
@@ -89,7 +89,7 @@ An example can be found [here](https://github.com/hmcts/terraform-module-virtual
 | <a name="input_dynatrace_tenant_id"></a> [dynatrace\_tenant\_id](#input\_dynatrace\_tenant\_id) | The Dynatrace tenant ID. | `string` | `""` | no |
 | <a name="input_dynatrace_token"></a> [dynatrace\_token](#input\_dynatrace\_token) | The token to use when communicating with the Dynatrace ActiveGate. | `string` | `""` | no |
 | <a name="input_encrypt_ADE"></a> [encrypt\_ADE](#input\_encrypt\_ADE) | Encrypt the disks using Azure Disk Encryption. | `bool` | `false` | no |
-| <a name="input_env"></a> [env](#input\_env) | n/a | `string` | `"test"` | no |
+| <a name="input_env"></a> [env](#input\_env) | Enironment name | `string` | `""` | no |
 | <a name="input_install_azure_monitor"></a> [install\_azure\_monitor](#input\_install\_azure\_monitor) | Install Azure Monitor on the virtual machine. | `bool` | `false` | no |
 | <a name="input_install_dynatrace_oneagent"></a> [install\_dynatrace\_oneagent](#input\_install\_dynatrace\_oneagent) | Install dynatrace oneagent on the virtual machine. | `bool` | `false` | no |
 | <a name="input_install_splunk_uf"></a> [install\_splunk\_uf](#input\_install\_splunk\_uf) | Insall splunk uniforwarder on the virtual machine. | `bool` | `false` | no |
@@ -97,10 +97,10 @@ An example can be found [here](https://github.com/hmcts/terraform-module-virtual
 | <a name="input_kv_name"></a> [kv\_name](#input\_kv\_name) | The name ofthe KeyVault used to store the customer-managed key. | `string` | `null` | no |
 | <a name="input_kv_rg_name"></a> [kv\_rg\_name](#input\_kv\_rg\_name) | The name of the resource group, containing the KeyVault used to store the customer-managed key. | `string` | `null` | no |
 | <a name="input_managed_disks"></a> [managed\_disks](#input\_managed\_disks) | A map of managed disks to create & attach to the virtual machine. | <pre>map(<br>    object(<br>      {<br>        storage_account_type = string,<br>        disk_create_option   = string,<br>        disk_size_gb         = string,<br>        disk_lun             = string,<br>        disk_caching         = string<br>      }<br>    )<br>  )</pre> | `{}` | no |
-| <a name="input_nessus_groups"></a> [nessus\_groups](#input\_nessus\_groups) | The Tenable Nessus groups. | `string` | `null` | no |
+| <a name="input_nessus_groups"></a> [nessus\_groups](#input\_nessus\_groups) | The Tenable Nessus groups. | `string` | `""` | no |
 | <a name="input_nessus_install"></a> [nessus\_install](#input\_nessus\_install) | Install Tenable Nessus on the virtual machine. | `string` | `false` | no |
-| <a name="input_nessus_key"></a> [nessus\_key](#input\_nessus\_key) | The key to use when communicating with Tenable Nessus. | `string` | `null` | no |
-| <a name="input_nessus_server"></a> [nessus\_server](#input\_nessus\_server) | The Tenable Nessus server URL. | `string` | `null` | no |
+| <a name="input_nessus_key"></a> [nessus\_key](#input\_nessus\_key) | The key to use when communicating with Tenable Nessus. | `string` | `""` | no |
+| <a name="input_nessus_server"></a> [nessus\_server](#input\_nessus\_server) | The Tenable Nessus server URL. | `string` | `""` | no |
 | <a name="input_network_interfaces"></a> [network\_interfaces](#input\_network\_interfaces) | One or more network\_interface can be set here, at least one of the network\_interface have to be primary | `any` | n/a | yes |
 | <a name="input_nic_name"></a> [nic\_name](#input\_nic\_name) | The name of the NIC to create & associate with the virtual machine. | `string` | `null` | no |
 | <a name="input_os_disk_storage_account_type"></a> [os\_disk\_storage\_account\_type](#input\_os\_disk\_storage\_account\_type) | The operating system disk storack account type. | `string` | `"StandardSSD_LRS"` | no |
@@ -110,12 +110,12 @@ An example can be found [here](https://github.com/hmcts/terraform-module-virtual
 | <a name="input_rc_script_file"></a> [rc\_script\_file](#input\_rc\_script\_file) | The path to the script file to run against the virtual machine. | `string` | `null` | no |
 | <a name="input_run_command"></a> [run\_command](#input\_run\_command) | Run a custom command/script against the virtual machine using a run command extension. | `bool` | `false` | no |
 | <a name="input_splunk_group"></a> [splunk\_group](#input\_splunk\_group) | The group to use when communicating with splunk. | `string` | `"hmcts_forwarders"` | no |
-| <a name="input_splunk_pass4symmkey"></a> [splunk\_pass4symmkey](#input\_splunk\_pass4symmkey) | The pass4symmkey to use when communicating with splunk. | `string` | `null` | no |
-| <a name="input_splunk_password"></a> [splunk\_password](#input\_splunk\_password) | The password to use when communicating with splunk. | `string` | `null` | no |
-| <a name="input_splunk_username"></a> [splunk\_username](#input\_splunk\_username) | The username to use when communicating with splunk. | `string` | `null` | no |
+| <a name="input_splunk_pass4symmkey"></a> [splunk\_pass4symmkey](#input\_splunk\_pass4symmkey) | The pass4symmkey to use when communicating with splunk. | `string` | `""` | no |
+| <a name="input_splunk_password"></a> [splunk\_password](#input\_splunk\_password) | The password to use when communicating with splunk. | `string` | `""` | no |
+| <a name="input_splunk_username"></a> [splunk\_username](#input\_splunk\_username) | The username to use when communicating with splunk. | `string` | `""` | no |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | Subnet ID where the VMSS going to deploy | `string` | n/a | yes |
 | <a name="input_systemassigned_identity"></a> [systemassigned\_identity](#input\_systemassigned\_identity) | Enable System Assigned managed identity for the virtual machine. | `bool` | `false` | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | The tags to apply to the virtual Machine Scale Set and associated resources. | `map(string)` | n/a | yes |
+| <a name="input_tags"></a> [tags](#input\_tags) | The tags to apply to the virtual Machine Scale Set and associated resources. | `map(string)` | `null` | no |
 | <a name="input_upgrade_mode"></a> [upgrade\_mode](#input\_upgrade\_mode) | Specifies how Upgrades should be performed to Virtual Machine Instances. Possible values are Automatic, Manual and Rolling | `string` | `"Manual"` | no |
 | <a name="input_userassigned_identity_ids"></a> [userassigned\_identity\_ids](#input\_userassigned\_identity\_ids) | List of User Manager Identity IDs to associate with the virtual machine. | `list(string)` | `[]` | no |
 | <a name="input_vm_admin_name"></a> [vm\_admin\_name](#input\_vm\_admin\_name) | The name of the admin user. | `string` | `"VMAdmin"` | no |
