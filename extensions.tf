@@ -1,8 +1,7 @@
 
 module "vm-bootstrap" {
-  count  = var.install_splunk_uf == true || var.nessus_install == true ? 1 : 0
-  source = "git::https://github.com/hmcts/terraform-module-vm-bootstrap.git?ref=master"
-
+  count                        = var.install_splunk_uf == true || var.nessus_install == true ? 1 : 0
+  source                       = "git::https://github.com/hmcts/terraform-module-vm-bootstrap.git?ref=master"
   virtual_machine_type         = "vmss"
   virtual_machine_scale_set_id = var.vm_type == "linux-scale-set" ? azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].id : azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].id
   splunk_username              = var.splunk_username
@@ -10,6 +9,7 @@ module "vm-bootstrap" {
   splunk_pass4symmkey          = var.splunk_pass4symmkey
   splunk_group                 = var.splunk_group
   os_type                      = var.vm_type == "linux-scale-set" ? "Linux" : "Windows"
+  env                          = var.environment == "prod" ? var.environment : "nonprod"
   nessus_server                = var.nessus_server
   nessus_key                   = var.nessus_key
   nessus_groups                = var.nessus_groups
@@ -30,4 +30,10 @@ module "vm-bootstrap" {
   additional_script_name       = var.additional_script_name
   custom_script_extension_name = var.custom_script_extension_name
   common_tags                  = var.tags
+
+  providers = {
+    azurerm.cnp = azurerm.cnp
+    azurerm.soc = azurerm.soc
+    #azurerm     = azurerm
+  }
 }

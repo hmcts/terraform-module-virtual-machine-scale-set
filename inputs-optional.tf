@@ -101,18 +101,18 @@ variable "install_splunk_uf" {
 variable "splunk_username" {
   type        = string
   description = "The username to use when communicating with splunk."
-  default     = null
+  default     = ""
 }
 
 variable "splunk_password" {
   type        = string
   description = "The password to use when communicating with splunk."
-  default     = null
+  default     = ""
 }
 variable "splunk_pass4symmkey" {
   type        = string
   description = "The pass4symmkey to use when communicating with splunk."
-  default     = null
+  default     = ""
 }
 variable "splunk_group" {
   type        = string
@@ -159,19 +159,19 @@ variable "nessus_install" {
 variable "nessus_server" {
   type        = string
   description = "The Tenable Nessus server URL."
-  default     = null
+  default     = ""
 }
 
 variable "nessus_key" {
   type        = string
   description = "The key to use when communicating with Tenable Nessus."
-  default     = null
+  default     = ""
 }
 
 variable "nessus_groups" {
   type        = string
   description = "The Tenable Nessus groups."
-  default     = null
+  default     = ""
 }
 
 variable "install_azure_monitor" {
@@ -254,7 +254,9 @@ variable "systemassigned_identity" {
 }
 
 variable "env" {
-  default = "test"
+  description = "Enironment name"
+  type        = string
+  default     = ""
 }
 variable "custom_script_extension_name" {
   description = "Overwrite custom script extension name label in bootstrap module."

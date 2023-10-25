@@ -76,5 +76,6 @@ variable "computer_name_prefix" {
 variable "tags" {
   type        = map(string)
   description = "The tags to apply to the virtual Machine Scale Set and associated resources."
+  default     = null
 }
 
