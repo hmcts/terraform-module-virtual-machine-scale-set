@@ -9,8 +9,6 @@ variable "vm_admin_name" {
   description = "The name of the admin user."
   default     = "VMAdmin"
 }
-
-
 variable "dns_servers" {
   type        = list(string)
   description = "DNS servers to use, will override DNS servers set at the VNET level"
