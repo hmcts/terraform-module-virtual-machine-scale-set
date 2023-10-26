@@ -36,5 +36,4 @@ module "vm-bootstrap" {
   additional_script_name       = var.additional_script_name
   custom_script_extension_name = var.custom_script_extension_name
   common_tags                  = var.tags
-
 }
