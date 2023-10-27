@@ -1,10 +1,10 @@
 
 module "vm-bootstrap" {
-  providers = {
+  /* providers = {
     azurerm.cnp = azurerm.cnp
     azurerm.soc = azurerm.soc
     azurerm     = azurerm
-  }
+  } */
 
   count                        = var.install_splunk_uf == true || var.nessus_install == true ? 1 : 0
   source                       = "git::https://github.com/hmcts/terraform-module-vm-bootstrap.git?ref=master"
