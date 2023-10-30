@@ -23,9 +23,9 @@ variable "vm_admin_password" {
   sensitive   = true
   description = "The Admin password for the virtual Machine Scale Set."
 }
-# variable "environment" {
-#   default = "ENTER_ENVIRONMENT"
-# }
+variable "environment" {
+  default = "ENTER_ENVIRONMENT"
+}
 variable "vm_publisher_name" {
   type        = string
   description = "The publiser of the marketplace image to use."
