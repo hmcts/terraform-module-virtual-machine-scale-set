@@ -89,6 +89,7 @@ An example can be found [here](https://github.com/hmcts/terraform-module-virtual
 | <a name="input_dynatrace_tenant_id"></a> [dynatrace\_tenant\_id](#input\_dynatrace\_tenant\_id) | The Dynatrace tenant ID. | `string` | `""` | no |
 | <a name="input_dynatrace_token"></a> [dynatrace\_token](#input\_dynatrace\_token) | The token to use when communicating with the Dynatrace ActiveGate. | `string` | `""` | no |
 | <a name="input_encrypt_ADE"></a> [encrypt\_ADE](#input\_encrypt\_ADE) | Encrypt the disks using Azure Disk Encryption. | `bool` | `false` | no |
+| <a name="input_env"></a> [env](#input\_env) | Enironment name | `string` | `""` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | n/a | `string` | `"ENTER_ENVIRONMENT"` | no |
 | <a name="input_install_azure_monitor"></a> [install\_azure\_monitor](#input\_install\_azure\_monitor) | Install Azure Monitor on the virtual machine. | `bool` | `false` | no |
 | <a name="input_install_dynatrace_oneagent"></a> [install\_dynatrace\_oneagent](#input\_install\_dynatrace\_oneagent) | Install dynatrace oneagent on the virtual machine. | `bool` | `false` | no |
