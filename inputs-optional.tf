@@ -257,11 +257,11 @@ variable "custom_script_extension_name" {
   default     = "HMCTSVMBootstrap"
 }
 
-variable "env" {
-  description = "Enironment name"
-  type        = string
-  default     = ""
-}
+# variable "env" {
+#   description = "Enironment name"
+#   type        = string
+#   default     = ""
+# }
 variable "upgrade_mode" {
   type        = string
   description = "Specifies how Upgrades should be performed to Virtual Machine Instances. Possible values are Automatic, Manual and Rolling"
