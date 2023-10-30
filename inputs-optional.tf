@@ -251,11 +251,11 @@ variable "systemassigned_identity" {
   default     = false
 }
 
-variable "env" {
-  description = "Enironment name"
-  type        = string
-  default     = ""
-}
+# variable "env" {
+#   description = "Enironment name"
+#   type        = string
+#   default     = ""
+# }
 variable "custom_script_extension_name" {
   description = "Overwrite custom script extension name label in bootstrap module."
   type        = string
