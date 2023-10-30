@@ -251,17 +251,17 @@ variable "systemassigned_identity" {
   default     = false
 }
 
-variable "env" {
-  description = "Enironment name"
-  type        = string
-  default     = ""
-}
 variable "custom_script_extension_name" {
   description = "Overwrite custom script extension name label in bootstrap module."
   type        = string
   default     = "HMCTSVMBootstrap"
 }
 
+variable "env" {
+  description = "Enironment name"
+  type        = string
+  default     = ""
+}
 variable "upgrade_mode" {
   type        = string
   description = "Specifies how Upgrades should be performed to Virtual Machine Instances. Possible values are Automatic, Manual and Rolling"
