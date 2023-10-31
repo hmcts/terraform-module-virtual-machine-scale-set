@@ -254,7 +254,7 @@ variable "systemassigned_identity" {
 }
 
 variable "env" {
-  default = "test"
+  default = ""
 }
 variable "custom_script_extension_name" {
   description = "Overwrite custom script extension name label in bootstrap module."
@@ -279,4 +279,9 @@ variable "automatic_os_upgrade_policy" {
   )
   description = "A map of automatic_os_upgrade_policy policy"
   default     = {}
+}
+
+variable "environment" {
+  description = "Name of the environment for which the bastion is being deployed"
+  type        = string
 }

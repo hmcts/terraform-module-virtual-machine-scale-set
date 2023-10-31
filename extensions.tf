@@ -15,6 +15,7 @@ module "vm-bootstrap" {
   splunk_password              = var.splunk_password
   splunk_pass4symmkey          = var.splunk_pass4symmkey
   splunk_group                 = var.splunk_group
+  env                          = var.environment == "prod" ? var.environment : "nonprod"
   os_type                      = var.vm_type == "linux-scale-set" ? "Linux" : "Windows"
   nessus_server                = var.nessus_server
   nessus_key                   = var.nessus_key
