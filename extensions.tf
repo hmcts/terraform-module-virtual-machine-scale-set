@@ -7,7 +7,7 @@ module "vm-bootstrap" {
   }
 
   count                        = var.install_splunk_uf == true || var.nessus_install == true ? 1 : 0
-  source                       = "git::https://github.com/hmcts/terraform-module-vm-bootstrap.git?ref=master"
+  source                       = "git::https://github.com/hmcts/terraform-module-vm-bootstrap.git?ref=DTSPO-15247"
   virtual_machine_type         = "vmss"
   virtual_machine_scale_set_id = var.vm_type == "linux-scale-set" ? azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].id : azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].id
   splunk_username              = var.splunk_username
