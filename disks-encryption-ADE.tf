@@ -47,6 +47,6 @@ resource "azurerm_virtual_machine_scale_set_extension" "vmextension" {
     "VolumeType"             = "All"
   })
 
-  depends_on = [module.vm-bootstrap]
+  #depends_on = [module.vm-bootstrap]
 }
 
