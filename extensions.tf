@@ -1,9 +1,9 @@
 
 module "vm-bootstrap" {
   providers = {
+    azurerm     = azurerm
     azurerm.cnp = azurerm.cnp
     azurerm.soc = azurerm.soc
-    azurerm     = azurerm
   }
 
   count                        = var.install_splunk_uf == true || var.nessus_install == true ? 1 : 0
@@ -36,5 +36,5 @@ module "vm-bootstrap" {
   additional_script_name       = var.additional_script_name
   custom_script_extension_name = var.custom_script_extension_name
   common_tags                  = var.tags
-  depends_on                   = [module.vm-bootstrap]
+
 }
