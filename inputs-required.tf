@@ -74,7 +74,6 @@ variable "vm_instances" {
 variable "computer_name_prefix" {
   type        = string
   description = "Enter Computer name prefix, it should be not more than 9 characters"
-  default     = ""
 }
 variable "tags" {
   type        = map(string)
