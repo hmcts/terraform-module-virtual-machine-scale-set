@@ -79,7 +79,7 @@ An example can be found [here](https://github.com/hmcts/terraform-module-virtual
 | <a name="input_automatic_os_upgrade_policy"></a> [automatic\_os\_upgrade\_policy](#input\_automatic\_os\_upgrade\_policy) | A map of automatic\_os\_upgrade\_policy policy | <pre>map(<br>    object(<br>      {<br>        disable_automatic_rollback  = bool,<br>        enable_automatic_os_upgrade = bool<br>      }<br>    )<br>  )</pre> | `{}` | no |
 | <a name="input_boot_diagnostics_enabled"></a> [boot\_diagnostics\_enabled](#input\_boot\_diagnostics\_enabled) | Whether to enable boot diagnostics. | `bool` | `true` | no |
 | <a name="input_boot_storage_uri"></a> [boot\_storage\_uri](#input\_boot\_storage\_uri) | The URI of the storage to use for boot diagnostics. | `string` | `null` | no |
-| <a name="input_computer_name_prefix"></a> [computer\_name\_prefix](#input\_computer\_name\_prefix) | Enter Computer name prefix, it should be not more than 9 characters | `string` | n/a | yes |
+| <a name="input_computer_name_prefix"></a> [computer\_name\_prefix](#input\_computer\_name\_prefix) | Enter Computer name prefix, it should be not more than 9 characters | `string` | `""` | no |
 | <a name="input_custom_data"></a> [custom\_data](#input\_custom\_data) | Custom data to pass to the virtual machine. | `string` | `null` | no |
 | <a name="input_custom_image_id"></a> [custom\_image\_id](#input\_custom\_image\_id) | The ID of a custom image to use. | `string` | `""` | no |
 | <a name="input_custom_script_extension_name"></a> [custom\_script\_extension\_name](#input\_custom\_script\_extension\_name) | Overwrite custom script extension name label in bootstrap module. | `string` | `"HMCTSVMBootstrap"` | no |
