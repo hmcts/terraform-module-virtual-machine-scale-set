@@ -12,6 +12,7 @@ resource "azurerm_windows_virtual_machine_scale_set" "windows_scale_set" {
   computer_name_prefix = var.computer_name_prefix
   upgrade_mode         = var.upgrade_mode
 
+  tags = var.tags
 
   source_image_reference {
     publisher = var.vm_publisher_name
@@ -83,6 +84,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "linux_scale_set" {
   custom_data          = var.custom_data
   computer_name_prefix = var.computer_name_prefix
   upgrade_mode         = var.upgrade_mode
+  tags                 = var.tags
   source_image_reference {
     publisher = var.vm_publisher_name
     offer     = var.vm_offer
