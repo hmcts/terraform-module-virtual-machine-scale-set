@@ -90,7 +90,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "linux_scale_set" {
     offer     = var.vm_offer
     sku       = var.vm_image_sku
     version   = var.vm_version
-
   }
 
   os_disk {
