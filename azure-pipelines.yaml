@@ -20,10 +20,6 @@ variables:
     value: 60
   - name: agentImage
     value: ubuntu-20.04
-  - name: product
-    value: sds-platform
-  - name: terraformInitSubscription
-    value: bf308a5c-0624-4334-8ff8-8dca9fd43783
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
 
 stages:
