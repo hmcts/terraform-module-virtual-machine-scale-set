@@ -47,11 +47,30 @@ stages:
         workspace:
           clean: all
         steps:
-        - task: AzureCLI@2
-          inputs:
-            azureSubscription: 'DTS-SHAREDSERVICESPTL-SBOX'
-            scriptType: 'bash'
-            scriptLocation: 'inlineScript'
-            inlineScript: |
-              terraform init
-              terraform test
+          - task: AzureCLI@2
+            displayName: 'Run Terraform Tests'
+            inputs:
+              azureSubscription: 'DTS-SHAREDSERVICESPTL-SBOX'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                terraform init
+                terraform test
+
+  - stage: Plan
+    dependsOn: Test
+    jobs:
+      - job: TerraformPlan
+        pool:
+          vmImage: ${{ variables.agentImage }}
+        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+        steps:
+          - task: AzureCLI@2
+            displayName: 'Run Terraform Plan'
+            inputs:
+              azureSubscription: 'DTS-SHAREDSERVICESPTL-SBOX'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                terraform init
+                terraform plan
