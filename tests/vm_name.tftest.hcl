@@ -42,10 +42,14 @@ run "short_computer_name" {
   command = plan
 
   variables {
-    vm_name           = "shortname"
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    vm_name              = "shortname"
+    vm_resource_group    = run.setup.resource_group
+    subnet_id            = run.setup.subnet
+    vm_image_sku         = run.setup.vm_image
+    network_interfaces   = run.setup.network_interfaces
+    vm_instances         = run.setup.vm_instances
+    computer_name_prefix = run.setup.computer_name_prefix
+    tags                 = run.setup.common_tags
   }
 
   assert {
@@ -59,10 +63,14 @@ run "long_computer_name" {
   command = plan
 
   variables {
-    vm_name           = "reallyreallylongvirtualmachinenamethatshouldgettruncated"
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    vm_name              = "reallyreallylongvirtualmachinenamethatshouldgettruncated"
+    vm_resource_group    = run.setup.resource_group
+    subnet_id            = run.setup.subnet
+    vm_image_sku         = run.setup.vm_image
+    network_interfaces   = run.setup.network_interfaces
+    vm_instances         = run.setup.vm_instances
+    computer_name_prefix = run.setup.computer_name_prefix
+    tags                 = run.setup.common_tags
   }
 
   assert {
@@ -76,11 +84,15 @@ run "custom_computer_name" {
   command = plan
 
   variables {
-    vm_name           = "exampls-vm"
-    computer_name     = "actualname"
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    vm_name              = "exampls-vm"
+    computer_name        = "actualname"
+    vm_resource_group    = run.setup.resource_group
+    subnet_id            = run.setup.subnet
+    vm_image_sku         = run.setup.vm_image
+    network_interfaces   = run.setup.network_interfaces
+    vm_instances         = run.setup.vm_instances
+    computer_name_prefix = run.setup.computer_name_prefix
+    tags                 = run.setup.common_tags
   }
 
   assert {

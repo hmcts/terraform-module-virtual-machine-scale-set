@@ -50,14 +50,18 @@ run "linux_vm" {
   command = plan
 
   variables {
-    vm_type           = "linux"
-    vm_publisher_name = "Canonical"
-    vm_offer          = "UbuntuServer"
-    vm_sku            = "22.04-LTS"
-    vm_version        = "latest"
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    vm_type              = "linux"
+    vm_publisher_name    = "Canonical"
+    vm_offer             = "UbuntuServer"
+    vm_sku               = "22.04-LTS"
+    vm_version           = "latest"
+    vm_resource_group    = run.setup.resource_group
+    subnet_id            = run.setup.subnet
+    vm_image_sku         = run.setup.vm_image
+    network_interfaces   = run.setup.network_interfaces
+    vm_instances         = run.setup.vm_instances
+    computer_name_prefix = run.setup.computer_name_prefix
+    tags                 = run.setup.common_tags
   }
 
   assert {
@@ -75,14 +79,18 @@ run "linux_vm_case_sensitivity" {
   command = plan
 
   variables {
-    vm_type           = "Linux"
-    vm_publisher_name = "Canonical"
-    vm_offer          = "UbuntuServer"
-    vm_sku            = "22.04-LTS"
-    vm_version        = "latest"
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    vm_type              = "Linux"
+    vm_publisher_name    = "Canonical"
+    vm_offer             = "UbuntuServer"
+    vm_sku               = "22.04-LTS"
+    vm_version           = "latest"
+    vm_resource_group    = run.setup.resource_group
+    subnet_id            = run.setup.subnet
+    vm_image_sku         = run.setup.vm_image
+    network_interfaces   = run.setup.network_interfaces
+    vm_instances         = run.setup.vm_instances
+    computer_name_prefix = run.setup.computer_name_prefix
+    tags                 = run.setup.common_tags
   }
 
   assert {
@@ -100,14 +108,18 @@ run "windows_vm" {
   command = plan
 
   variables {
-    vm_type           = "windows"
-    vm_publisher_name = "MicrosoftWindowsServer"
-    vm_offer          = "WindowsServer"
-    vm_sku            = "2022-Datacenter"
-    vm_version        = "latest"
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    vm_type              = "windows"
+    vm_publisher_name    = "MicrosoftWindowsServer"
+    vm_offer             = "WindowsServer"
+    vm_sku               = "2022-Datacenter"
+    vm_version           = "latest"
+    vm_resource_group    = run.setup.resource_group
+    subnet_id            = run.setup.subnet
+    vm_image_sku         = run.setup.vm_image
+    network_interfaces   = run.setup.network_interfaces
+    vm_instances         = run.setup.vm_instances
+    computer_name_prefix = run.setup.computer_name_prefix
+    tags                 = run.setup.common_tags
   }
 
   assert {
@@ -125,14 +137,18 @@ run "windows_vm_case_sensitivity" {
   command = plan
 
   variables {
-    vm_type           = "Windows"
-    vm_publisher_name = "MicrosoftWindowsServer"
-    vm_offer          = "WindowsServer"
-    vm_sku            = "2022-Datacenter"
-    vm_version        = "latest"
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    vm_type              = "Windows"
+    vm_publisher_name    = "MicrosoftWindowsServer"
+    vm_offer             = "WindowsServer"
+    vm_sku               = "2022-Datacenter"
+    vm_version           = "latest"
+    vm_resource_group    = run.setup.resource_group
+    subnet_id            = run.setup.subnet
+    vm_image_sku         = run.setup.vm_image
+    network_interfaces   = run.setup.network_interfaces
+    vm_instances         = run.setup.vm_instances
+    computer_name_prefix = run.setup.computer_name_prefix
+    tags                 = run.setup.common_tags
   }
 
   assert {
@@ -150,14 +166,18 @@ run "unknown_vm" {
   command = plan
 
   variables {
-    vm_type           = "Hannah Montanah Linux"
-    vm_publisher_name = "MicrosoftWindowsServer"
-    vm_offer          = "WindowsServer"
-    vm_sku            = "2022-Datacenter"
-    vm_version        = "latest"
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    vm_type              = "Hannah Montanah Linux"
+    vm_publisher_name    = "MicrosoftWindowsServer"
+    vm_offer             = "WindowsServer"
+    vm_sku               = "2022-Datacenter"
+    vm_version           = "latest"
+    vm_resource_group    = run.setup.resource_group
+    subnet_id            = run.setup.subnet
+    vm_image_sku         = run.setup.vm_image
+    network_interfaces   = run.setup.network_interfaces
+    vm_instances         = run.setup.vm_instances
+    computer_name_prefix = run.setup.computer_name_prefix
+    tags                 = run.setup.common_tags
   }
 
   assert {

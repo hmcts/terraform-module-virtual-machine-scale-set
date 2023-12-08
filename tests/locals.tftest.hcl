@@ -43,9 +43,13 @@ run "no_identity" {
   command = plan
 
   variables {
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    vm_resource_group    = run.setup.resource_group
+    subnet_id            = run.setup.subnet
+    vm_image_sku         = run.setup.vm_image
+    network_interfaces   = run.setup.network_interfaces
+    vm_instances         = run.setup.vm_instances
+    computer_name_prefix = run.setup.computer_name_prefix
+    tags                 = run.setup.common_tags
 
     systemassigned_identity   = false
     userassigned_identity_ids = []
@@ -62,9 +66,13 @@ run "system_identity" {
   command = plan
 
   variables {
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    vm_resource_group    = run.setup.resource_group
+    subnet_id            = run.setup.subnet
+    vm_image_sku         = run.setup.vm_image
+    network_interfaces   = run.setup.network_interfaces
+    vm_instances         = run.setup.vm_instances
+    computer_name_prefix = run.setup.computer_name_prefix
+    tags                 = run.setup.common_tags
 
     systemassigned_identity   = true
     userassigned_identity_ids = []
@@ -89,9 +97,13 @@ run "user_identity" {
   command = plan
 
   variables {
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    vm_resource_group    = run.setup.resource_group
+    subnet_id            = run.setup.subnet
+    vm_image_sku         = run.setup.vm_image
+    network_interfaces   = run.setup.network_interfaces
+    vm_instances         = run.setup.vm_instances
+    computer_name_prefix = run.setup.computer_name_prefix
+    tags                 = run.setup.common_tags
 
     systemassigned_identity = false
     userassigned_identity_ids = [
@@ -119,9 +131,13 @@ run "both_identities" {
   command = plan
 
   variables {
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    vm_resource_group    = run.setup.resource_group
+    subnet_id            = run.setup.subnet
+    vm_image_sku         = run.setup.vm_image
+    network_interfaces   = run.setup.network_interfaces
+    vm_instances         = run.setup.vm_instances
+    computer_name_prefix = run.setup.computer_name_prefix
+    tags                 = run.setup.common_tags
 
     systemassigned_identity = true
     userassigned_identity_ids = [
