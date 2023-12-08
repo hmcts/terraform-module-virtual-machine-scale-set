@@ -26,11 +26,20 @@ variables {
   vm_type              = "windows"
   vm_publisher_name    = "MicrosoftWindowsServer"
   vm_offer             = "WindowsServer"
-  vm_sku               = "2022-Datacenter"
+  vm_sku               = "Standard_D8ds_v5"
   vm_version           = "latest"
   vm_size              = "D2ds_v5"
   vm_availabilty_zones = "1"
+  vm_image_sku         = "2022-Datacenter"
+  computer_name_prefix = "test-vm"
+
+  network_interfaces = {
+      nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
+        primary        = true,
+        ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
+      }
 }
+
 
 run "setup" {
   module {
