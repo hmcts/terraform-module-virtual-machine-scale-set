@@ -49,23 +49,15 @@ variables {
 #   }
 # }
 
-run "setup" {
-  variables {
-    resource_group = "vm_resource_group"
-    subnet         = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/example-vnet/subnets/example-subnet"
-    common_tags = {
-      key = "value"
-    }
-  }
-}
-
 run "no_identity" {
   command = plan
 
   variables {
-    vm_resource_group         = run.setup.resource_group
-    subnet_id                 = run.setup.subnet
-    tags                      = run.setup.common_tags
+    vm_resource_group = var.vm_resource_group
+    subnet_id         = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/example-vnet/subnets/example-subnet"
+    tags = {
+      key = "value"
+    }
     systemassigned_identity   = false
     userassigned_identity_ids = []
   }
@@ -80,9 +72,11 @@ run "system_identity" {
   command = plan
 
   variables {
-    vm_resource_group         = run.setup.resource_group
-    subnet_id                 = run.setup.subnet
-    tags                      = run.setup.common_tags
+    vm_resource_group = var.vm_resource_group
+    subnet_id         = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/example-vnet/subnets/example-subnet"
+    tags = {
+      key = "value"
+    }
     systemassigned_identity   = true
     userassigned_identity_ids = []
   }
@@ -105,9 +99,11 @@ run "user_identity" {
   command = plan
 
   variables {
-    vm_resource_group       = run.setup.resource_group
-    subnet_id               = run.setup.subnet
-    tags                    = run.setup.common_tags
+    vm_resource_group = var.vm_resource_group
+    subnet_id         = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/example-vnet/subnets/example-subnet"
+    tags = {
+      key = "value"
+    }
     systemassigned_identity = false
     userassigned_identity_ids = [
       "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentityValue1",
@@ -133,9 +129,11 @@ run "both_identities" {
   command = plan
 
   variables {
-    vm_resource_group       = run.setup.resource_group
-    subnet_id               = run.setup.subnet
-    tags                    = run.setup.common_tags
+    vm_resource_group = var.vm_resource_group
+    subnet_id         = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/example-vnet/subnets/example-subnet"
+    tags = {
+      key = "value"
+    }
     systemassigned_identity = true
     userassigned_identity_ids = [
       "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentityValue3",
