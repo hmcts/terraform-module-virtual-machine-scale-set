@@ -51,7 +51,7 @@ variables {
 
 run "setup" {
   variables {
-    resource_group = "example-resource-group"
+    resource_group = "vm_resource_group"
     subnet         = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/example-vnet/subnets/example-subnet"
     common_tags = {
       key = "value"
