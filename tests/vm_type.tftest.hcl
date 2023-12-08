@@ -43,11 +43,12 @@ variables {
 # and are automatically destroyed at the end of the tests. This does mean that
 # tests can't be run concurrently, so we will need to add some logic to the
 # pipeline to prevent concurrent jobs.
-run "setup" {
-  module {
-    source = "./tests/modules/setup"
-  }
-}
+
+# run "setup" {
+#   module {
+#     source = "./tests/modules/setup"
+#   }
+# }
 
 # The actual test infrastructure doesn't need to be applied. We can run
 # assertions against the state created by a plan. The only exception is if we

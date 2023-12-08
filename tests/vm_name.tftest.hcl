@@ -38,11 +38,11 @@ variables {
       }
 }
 
-run "setup" {
-  module {
-    source = "./tests/modules/setup"
-  }
-}
+# run "setup" {
+#   module {
+#     source = "./tests/modules/setup"
+#   }
+# }
 
 run "short_computer_name" {
 

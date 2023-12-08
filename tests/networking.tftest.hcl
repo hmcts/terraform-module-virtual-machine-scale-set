@@ -20,7 +20,7 @@ provider "azurerm" {
 
 # Default variables for this test
 variables {
-  env                  = "nonprod"
+   env                  = "nonprod"
   vm_name              = "net-test"
   vm_admin_password    = "example-$uper-$EcUrE-password" # ideally from a secret store
   vm_type              = "windows"
@@ -39,12 +39,13 @@ variables {
         ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
       }
 }
+ 
 
-run "setup" {
-  module {
-    source = "./tests/modules/setup"
-  }
-}
+# run "setup" {
+#   module {
+#     source = "./tests/modules/setup"
+#   }
+# }
 
 run "calculated_nic_name" {
 

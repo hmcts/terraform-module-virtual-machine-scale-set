@@ -32,20 +32,20 @@ variables {
   vm_availabilty_zones = "1"
   vm_image_sku         = "2022-Datacenter"
   computer_name_prefix = "test-vm"
-
   network_interfaces = {
-      nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
-        primary        = true,
-        ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
-      }
-}
-
-
-run "setup" {
-  module {
-    source = "./tests/modules/setup"
+    nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
+      primary        = true,
+      ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
+    }
   }
+
 }
+
+# run "setup" {
+#   module {
+#     source = "./tests/modules/setup"
+#   }
+# }
 
 run "no_identity" {
 
