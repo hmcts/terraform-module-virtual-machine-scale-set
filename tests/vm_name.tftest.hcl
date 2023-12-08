@@ -44,7 +44,7 @@ run "short_computer_name" {
   variables {
     vm_name           = "shortname"
     vm_resource_group = run.setup.resource_group
-    vm_subnet_id      = run.setup.subnet
+    subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
   }
 
@@ -61,7 +61,7 @@ run "long_computer_name" {
   variables {
     vm_name           = "reallyreallylongvirtualmachinenamethatshouldgettruncated"
     vm_resource_group = run.setup.resource_group
-    vm_subnet_id      = run.setup.subnet
+    subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
   }
 
@@ -79,7 +79,7 @@ run "custom_computer_name" {
     vm_name           = "exampls-vm"
     computer_name     = "actualname"
     vm_resource_group = run.setup.resource_group
-    vm_subnet_id      = run.setup.subnet
+    subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
   }
 
