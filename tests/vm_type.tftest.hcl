@@ -27,6 +27,7 @@ variables {
   vm_sku               = "Standard_D8ds_v5"
   vm_image_sku         = "2022-Datacenter"
   computer_name_prefix = "test-vm"
+  vm_instances         = "2"
   vm_availabilty_zones = "1"
 
   network_interfaces = {
@@ -143,8 +144,8 @@ run "windows_vm_case_sensitivity" {
     vm_offer          = "WindowsServer"
     vm_sku            = "2022-Datacenter"
     vm_version        = "latest"
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
+    vm_resource_group = local.rg_name
+    subnet_id         = azurerm_subnet.gateway_subnet.id
     tags              = run.setup.common_tags
   }
 

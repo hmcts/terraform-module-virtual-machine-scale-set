@@ -31,6 +31,7 @@ variables {
   vm_size              = "D2ds_v5"
   vm_availabilty_zones = "1"
   vm_image_sku         = "2022-Datacenter"
+  vm_instances         = "2"
   computer_name_prefix = "test-vm"
 
   network_interfaces = {
@@ -53,8 +54,8 @@ run "no_identity" {
   command = plan
 
   variables {
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
+    vm_resource_group = local.rg_name
+    subnet_id         = azurerm_subnet.gateway_subnet.id
     tags              = run.setup.common_tags
 
     systemassigned_identity   = false
