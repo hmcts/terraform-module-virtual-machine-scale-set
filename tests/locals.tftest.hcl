@@ -51,36 +51,27 @@ variables {
 
 run "no_identity" {
   command = plan
-
-  variables {
-    vm_resource_group = var.vm_resource_group
-    subnet_id         = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/example-vnet/subnets/example-subnet"
-    tags = {
-      key = "value"
-    }
+  # variables {
+  #   vm_resource_group = run.setup.resource_group
+  #   subnet_id         = run.setup.subnet
+  #   tags              = run.setup.common_tags
     systemassigned_identity   = false
     userassigned_identity_ids = []
   }
-
   assert {
     condition     = length(local.identity) == 0
     error_message = "Identity block is not empty when no identities were specified"
   }
 }
-
 run "system_identity" {
   command = plan
-
-  variables {
-    vm_resource_group = var.vm_resource_group
-    subnet_id         = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/example-vnet/subnets/example-subnet"
-    tags = {
-      key = "value"
-    }
+  # variables {
+  #   vm_resource_group = run.setup.resource_group
+  #   subnet_id         = run.setup.subnet
+  #   tags              = run.setup.common_tags
     systemassigned_identity   = true
     userassigned_identity_ids = []
   }
-
   assert {
     condition     = length(local.identity) == 1
     error_message = "Identity block is empty when a system assigned identity was specified"
@@ -94,23 +85,18 @@ run "system_identity" {
     error_message = "Identity IDs were specified when using only system assigned identity"
   }
 }
-
 run "user_identity" {
   command = plan
-
   variables {
-    vm_resource_group = var.vm_resource_group
-    subnet_id         = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/example-vnet/subnets/example-subnet"
-    tags = {
-      key = "value"
-    }
+    # vm_resource_group = run.setup.resource_group
+    # subnet_id         = run.setup.subnet
+    # tags              = run.setup.common_tags
     systemassigned_identity = false
     userassigned_identity_ids = [
       "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentityValue1",
       "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentityValue2"
     ]
   }
-
   assert {
     condition     = length(local.identity) == 1
     error_message = "Identity block is empty when user assigned identities were specified"
@@ -124,16 +110,12 @@ run "user_identity" {
     error_message = "Wrong number of Identity IDs were specified when using user assigned identity"
   }
 }
-
 run "both_identities" {
   command = plan
-
   variables {
-    vm_resource_group = var.vm_resource_group
-    subnet_id         = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/example-vnet/subnets/example-subnet"
-    tags = {
-      key = "value"
-    }
+    # vm_resource_group = run.setup.resource_group
+    # subnet_id         = run.setup.subnet
+    # tags              = run.setup.common_tags
     systemassigned_identity = true
     userassigned_identity_ids = [
       "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentityValue3",
@@ -141,7 +123,6 @@ run "both_identities" {
       "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentityValue5"
     ]
   }
-
   assert {
     condition     = length(local.identity) == 1
     error_message = "Identity block is empty when system and user assigned identities were specified"

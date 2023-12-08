@@ -28,7 +28,3 @@ resource "azurerm_subnet" "test" {
   address_prefixes     = ["10.0.1.0/24"]
 }
 
-variable "vm_resource_group" {
-  type    = string
-  default = "default-resource-group-name"
-}

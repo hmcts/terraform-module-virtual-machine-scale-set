@@ -55,9 +55,9 @@ run "calculated_nic_name" {
   command = plan
 
   variables {
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    # vm_resource_group = run.setup.resource_group
+    # subnet_id         = run.setup.subnet
+    # tags              = run.setup.common_tags
   }
 
   assert {
@@ -71,10 +71,10 @@ run "custom_nic_name" {
   command = plan
 
   variables {
-    nic_name          = "my-nic-name"
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    nic_name = "my-nic-name"
+    #vm_resource_group = run.setup.resource_group
+    subnet_id = run.setup.subnet
+    tags      = run.setup.common_tags
   }
 
   assert {
@@ -88,9 +88,9 @@ run "calculated_ipconfig_name" {
   command = plan
 
   variables {
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    #vm_resource_group = run.setup.resource_group
+    subnet_id = run.setup.subnet
+    tags      = run.setup.common_tags
   }
 
   assert {
@@ -104,10 +104,10 @@ run "custom_ipconfig_name" {
   command = plan
 
   variables {
-    ipconfig_name     = "my-ipconfig-name"
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    ipconfig_name = "my-ipconfig-name"
+    #vm_resource_group = run.setup.resource_group
+    subnet_id = run.setup.subnet
+    tags      = run.setup.common_tags
   }
 
   assert {

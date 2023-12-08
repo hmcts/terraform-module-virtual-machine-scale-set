@@ -53,12 +53,12 @@ run "short_computer_name" {
 
   command = plan
 
-  variables {
-    vm_name           = "shortname"
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
-  }
+  # variables {
+  #   vm_name = "shortname"
+  #   #vm_resource_group = run.setup.resource_group
+  #   #subnet_id = run.setup.subnet
+  #   tags = run.setup.common_tags
+  # }
 
   assert {
     condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].computer_name == "shortname"
@@ -70,12 +70,12 @@ run "long_computer_name" {
 
   command = plan
 
-  variables {
-    vm_name           = "reallyreallylongvirtualmachinenamethatshouldgettruncated"
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
-  }
+  # variables {
+  #   vm_name           = "reallyreallylongvirtualmachinenamethatshouldgettruncated"
+  #   vm_resource_group = run.setup.resource_group
+  #   subnet_id         = run.setup.subnet
+  #   tags              = run.setup.common_tags
+  # }
 
   assert {
     condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].computer_name == "reallyreallylon"
