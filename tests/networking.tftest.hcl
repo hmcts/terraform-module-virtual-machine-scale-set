@@ -55,8 +55,8 @@ run "calculated_nic_name" {
   command = plan
 
   variables {
-    vm_resource_group = local.rg_name
-    subnet_id         = azurerm_subnet.gateway_subnet.id
+    vm_resource_group = run.setup.resource_group
+    subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
   }
 

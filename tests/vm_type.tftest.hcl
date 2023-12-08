@@ -144,8 +144,8 @@ run "windows_vm_case_sensitivity" {
     vm_offer          = "WindowsServer"
     vm_sku            = "2022-Datacenter"
     vm_version        = "latest"
-    vm_resource_group = local.rg_name
-    subnet_id         = azurerm_subnet.gateway_subnet.id
+    vm_resource_group = run.setup.resource_group
+    subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
   }
 
