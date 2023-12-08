@@ -161,11 +161,11 @@ run "unknown_vm" {
   }
 
   assert {
-    condition     = length(azurerm_linux_virtual_machine.linvm) == 0
+    condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 0
     error_message = "Module stood up a linux virtual machine"
   }
   assert {
-    condition     = length(azurerm_windows_virtual_machine.winvm) == 0
+    condition     = length(azurerm_windows_virtual_machine_scale_set.windows_scale_set) == 0
     error_message = "Module stood up a windows virtual machine"
   }
 
