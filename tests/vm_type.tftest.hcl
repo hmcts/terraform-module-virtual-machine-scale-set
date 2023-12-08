@@ -28,12 +28,16 @@ variables {
   vm_image_sku         = "2022-Datacenter"
   computer_name_prefix = "test-vm"
   vm_availabilty_zones = "1"
+
   network_interfaces = {
-      nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
-        primary        = true,
-        ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
-      }
+    nic0 = {
+      name           = "test-nic-vmss-nonprod-uksouth-nic"
+      primary        = true
+      ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig"
+    }
+  }
 }
+
 
 # The virtual machine module depends on some external infrastructure that needs
 # to be present before we can run a plan against it. The 'setup' run stands up

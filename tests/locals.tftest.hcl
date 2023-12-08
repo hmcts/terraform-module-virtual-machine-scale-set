@@ -22,7 +22,7 @@ provider "azurerm" {
 variables {
   env                  = "nonprod"
   vm_name              = "disk-test"
-  vm_admin_password    = "example-$uper-$EcUrE-password" # ideally from a secret store
+  vm_admin_password    = "example-$uper-$EcUrE-password"
   vm_type              = "windows"
   vm_publisher_name    = "MicrosoftWindowsServer"
   vm_offer             = "WindowsServer"
@@ -32,13 +32,14 @@ variables {
   vm_availabilty_zones = "1"
   vm_image_sku         = "2022-Datacenter"
   computer_name_prefix = "test-vm"
+
   network_interfaces = {
-    nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
-      primary        = true,
-      ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
+    nic0 = {
+      name           = "test-nic-vmss-nonprod-uksouth-nic"
+      primary        = true
+      ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig"
     }
   }
-
 }
 
 # run "setup" {
@@ -153,3 +154,4 @@ run "both_identities" {
     error_message = "Wrong number of Identity IDs were specified when using system and user assigned identities"
   }
 }
+
