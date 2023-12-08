@@ -44,7 +44,7 @@ run "no_identity" {
 
   variables {
     vm_resource_group = run.setup.resource_group
-    vm_subnet_id      = run.setup.subnet
+    subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
 
     systemassigned_identity   = false
@@ -63,7 +63,7 @@ run "system_identity" {
 
   variables {
     vm_resource_group = run.setup.resource_group
-    vm_subnet_id      = run.setup.subnet
+    subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
 
     systemassigned_identity   = true
@@ -90,7 +90,7 @@ run "user_identity" {
 
   variables {
     vm_resource_group = run.setup.resource_group
-    vm_subnet_id      = run.setup.subnet
+    subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
 
     systemassigned_identity = false
@@ -120,7 +120,7 @@ run "both_identities" {
 
   variables {
     vm_resource_group = run.setup.resource_group
-    vm_subnet_id      = run.setup.subnet
+    subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
 
     systemassigned_identity = true

@@ -81,7 +81,7 @@ run "linux_vm_case_sensitivity" {
     vm_sku            = "22.04-LTS"
     vm_version        = "latest"
     vm_resource_group = run.setup.resource_group
-    vm_subnet_id      = run.setup.subnet
+    subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
   }
 
@@ -106,7 +106,7 @@ run "windows_vm" {
     vm_sku            = "2022-Datacenter"
     vm_version        = "latest"
     vm_resource_group = run.setup.resource_group
-    vm_subnet_id      = run.setup.subnet
+    subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
   }
 
@@ -131,7 +131,7 @@ run "windows_vm_case_sensitivity" {
     vm_sku            = "2022-Datacenter"
     vm_version        = "latest"
     vm_resource_group = run.setup.resource_group
-    vm_subnet_id      = run.setup.subnet
+    subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
   }
 
@@ -156,7 +156,7 @@ run "unknown_vm" {
     vm_sku            = "2022-Datacenter"
     vm_version        = "latest"
     vm_resource_group = run.setup.resource_group
-    vm_subnet_id      = run.setup.subnet
+    subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
   }
 
