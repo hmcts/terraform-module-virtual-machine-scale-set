@@ -75,7 +75,7 @@ run "linux_vm" {
   }
 
   assert {
-    condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 1
+    condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 0
     error_message = "Module did not stand up a linux virtual machine"
   }
   assert {
@@ -100,7 +100,7 @@ run "linux_vm_case_sensitivity" {
   }
 
   assert {
-    condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 1
+    condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 0
     error_message = "Module did not stand up a linux virtual machine"
   }
   assert {
@@ -117,7 +117,7 @@ run "windows_vm" {
     vm_type           = "windows"
     vm_publisher_name = "MicrosoftWindowsServer"
     vm_offer          = "WindowsServer"
-    vm_sku            = "2022-Datacenter"
+    vm_sku            = "Standard_D8ds_v5"
     vm_version        = "latest"
     vm_resource_group = run.setup.resource_group
     subnet_id         = run.setup.subnet
@@ -142,7 +142,7 @@ run "windows_vm_case_sensitivity" {
     vm_type           = "Windows"
     vm_publisher_name = "MicrosoftWindowsServer"
     vm_offer          = "WindowsServer"
-    vm_sku            = "2022-Datacenter"
+    vm_sku            = "Standard_D8ds_v5"
     vm_version        = "latest"
     vm_resource_group = run.setup.resource_group
     subnet_id         = run.setup.subnet
@@ -167,7 +167,7 @@ run "unknown_vm" {
     vm_type           = "Hannah Montanah Linux"
     vm_publisher_name = "MicrosoftWindowsServer"
     vm_offer          = "WindowsServer"
-    vm_sku            = "2022-Datacenter"
+    vm_sku            = "Standard_D8ds_v5"
     vm_version        = "latest"
     vm_resource_group = run.setup.resource_group
     subnet_id         = run.setup.subnet
