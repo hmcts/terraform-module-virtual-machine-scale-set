@@ -104,7 +104,7 @@ run "linux_vm_case_sensitivity" {
     error_message = "Module did not stand up a linux virtual machine"
   }
   assert {
-    condition     = lengthazurerm_windows_virtual_machine_scale_set.windows_scale_set) == 0
+    condition     = length(azurerm_windows_virtual_machine_scale_set.windows_scale_set) == 0
     error_message = "Module stood up a windows virtual machine"
   }
 }
