@@ -49,159 +49,29 @@ variables {
 # tests can't be run concurrently, so we will need to add some logic to the
 # pipeline to prevent concurrent jobs.
 
-# run "setup" {
-#   module {
-#     source = "./tests/modules/setup"
-#   }
-# }
+run "setup" {
+  module {
+    source = "./tests/modules/setup"
+  }
+}
 
 # The actual test infrastructure doesn't need to be applied. We can run
 # assertions against the state created by a plan. The only exception is if we
 # Need to test against values that are only known after an apply. This includes
 # things like resource IDs, IP addresses and VM extensions.
-# run "linux_vm" {
-
-#   command = plan
-
-#   variables {
-#     vm_type           = "linux"
-#     vm_publisher_name = "Canonical"
-#     vm_offer          = "UbuntuServer"
-#     vm_sku            = "22.04-LTS"
-#     vm_version        = "latest"
-#     vm_resource_group = run.setup.resource_group
-#     subnet_id         = run.setup.subnet
-#     tags              = run.setup.common_tags
-#   }
-
-#   assert {
-#     condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 1
-#     error_message = "Module did not stand up a linux virtual machine"
-#   }
-#   assert {
-#     condition     = length(azurerm_windows_virtual_machine_scale_set.windows_scale_set) == 0
-#     error_message = "Module stood up a windows virtual machine"
-#   }
-# }
-
-# run "linux_vm_case_sensitivity" {
-
-#   command = plan
-
-#   variables {
-#     vm_type           = "Linux"
-#     vm_publisher_name = "Canonical"
-#     vm_offer          = "UbuntuServer"
-#     vm_sku            = "22.04-LTS"
-#     vm_version        = "latest"
-#     vm_resource_group = run.setup.resource_group
-#     subnet_id         = run.setup.subnet
-#     tags              = run.setup.common_tags
-#   }
-
-#   assert {
-#     condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 1
-#     error_message = "Module did not stand up a linux virtual machine"
-#   }
-#   assert {
-#     condition     = length(azurerm_windows_virtual_machine_scale_set.windows_scale_set) == 0
-#     error_message = "Module stood up a windows virtual machine"
-#   }
-# }
-
-# run "windows_vm" {
-
-#   command = plan
-
-#   variables {
-#     vm_type           = "windows"
-#     vm_publisher_name = "MicrosoftWindowsServer"
-#     vm_offer          = "WindowsServer"
-#     vm_sku            = "2022-Datacenter"
-#     vm_version        = "latest"
-#     vm_resource_group = run.setup.resource_group
-#     subnet_id         = run.setup.subnet
-#     tags              = run.setup.common_tags
-#   }
-
-#   assert {
-#     condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 0
-#     error_message = "Module stood up a linux virtual machine"
-#   }
-#   assert {
-#     condition     = length(azurerm_windows_virtual_machine_scale_set.windows_scale_set) == 1
-#     error_message = "Module did not stand up a windows virtual machine"
-#   }
-# }
-
-# run "windows_vm_case_sensitivity" {
-
-#   command = plan
-
-#   variables {
-#     vm_type           = "Windows"
-#     vm_publisher_name = "MicrosoftWindowsServer"
-#     vm_offer          = "WindowsServer"
-#     vm_sku            = "2022-Datacenter"
-#     vm_version        = "latest"
-#     vm_resource_group = run.setup.resource_group
-#     subnet_id         = run.setup.subnet
-#     tags              = run.setup.common_tags
-#   }
-
-#   assert {
-#     condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 0
-#     error_message = "Module stood up a linux virtual machine"
-#   }
-#   assert {
-#     condition     = length(azurerm_windows_virtual_machine_scale_set.windows_scale_set) == 1
-#     error_message = "Module did not stand up a windows virtual machine"
-#   }
-# }
-
-# run "unknown_vm" {
-
-#   command = plan
-
-#   variables {
-#     vm_type           = "Hannah Montanah Linux"
-#     vm_publisher_name = "MicrosoftWindowsServer"
-#     vm_offer          = "WindowsServer"
-#     vm_sku            = "2022-Datacenter"
-#     vm_version        = "latest"
-#     vm_resource_group = run.setup.resource_group
-#     subnet_id         = run.setup.subnet
-#     tags              = run.setup.common_tags
-#   }
-
-#   assert {
-#     condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 0
-#     error_message = "Module stood up a linux virtual machine"
-#   }
-#   assert {
-#     condition     = length(azurerm_windows_virtual_machine_scale_set.windows_scale_set) == 0
-#     error_message = "Module stood up a windows virtual machine"
-#   }
-
-#   expect_failures = [
-#     var.vm_type
-#   ]
-# }
-
 run "linux_vm" {
+
   command = plan
 
   variables {
     vm_type           = "linux"
     vm_publisher_name = "Canonical"
     vm_offer          = "UbuntuServer"
-    vm_sku            = "2022-Datacenter"
+    vm_sku            = "22.04-LTS"
     vm_version        = "latest"
-    vm_resource_group = "your-actual-resource-group-name"                                                                                                                                 # Replace with your actual resource group name
-    subnet_id         = "/subscriptions/your-subscription-id/resourceGroups/your-resource-group-name/providers/Microsoft.Network/virtualNetworks/your-vnet-name/subnets/your-subnet-name" # Replace with your actual values
-    tags = {
-      key = "value"
-    }
+    vm_resource_group = run.setup.resource_group
+    subnet_id         = run.setup.subnet
+    tags              = run.setup.common_tags
   }
 
   assert {
@@ -215,19 +85,18 @@ run "linux_vm" {
 }
 
 run "linux_vm_case_sensitivity" {
+
   command = plan
 
   variables {
     vm_type           = "Linux"
     vm_publisher_name = "Canonical"
     vm_offer          = "UbuntuServer"
-    vm_sku            = "2022-Datacenter"
+    vm_sku            = "22.04-LTS"
     vm_version        = "latest"
-    vm_resource_group = "your-actual-resource-group-name"                                                                                                                                 # Replace with your actual resource group name
-    subnet_id         = "/subscriptions/your-subscription-id/resourceGroups/your-resource-group-name/providers/Microsoft.Network/virtualNetworks/your-vnet-name/subnets/your-subnet-name" # Replace with your actual values
-    tags = {
-      key = "value"
-    }
+    vm_resource_group = run.setup.resource_group
+    subnet_id         = run.setup.subnet
+    tags              = run.setup.common_tags
   }
 
   assert {
@@ -241,6 +110,7 @@ run "linux_vm_case_sensitivity" {
 }
 
 run "windows_vm" {
+
   command = plan
 
   variables {
@@ -249,11 +119,9 @@ run "windows_vm" {
     vm_offer          = "WindowsServer"
     vm_sku            = "2022-Datacenter"
     vm_version        = "latest"
-    vm_resource_group = "your-actual-resource-group-name"                                                                                                                                 # Replace with your actual resource group name
-    subnet_id         = "/subscriptions/your-subscription-id/resourceGroups/your-resource-group-name/providers/Microsoft.Network/virtualNetworks/your-vnet-name/subnets/your-subnet-name" # Replace with your actual values
-    tags = {
-      key = "value"
-    }
+    vm_resource_group = run.setup.resource_group
+    subnet_id         = run.setup.subnet
+    tags              = run.setup.common_tags
   }
 
   assert {
@@ -267,6 +135,7 @@ run "windows_vm" {
 }
 
 run "windows_vm_case_sensitivity" {
+
   command = plan
 
   variables {
@@ -275,11 +144,9 @@ run "windows_vm_case_sensitivity" {
     vm_offer          = "WindowsServer"
     vm_sku            = "2022-Datacenter"
     vm_version        = "latest"
-    vm_resource_group = "your-actual-resource-group-name"                                                                                                                                 # Replace with your actual resource group name
-    subnet_id         = "/subscriptions/your-subscription-id/resourceGroups/your-resource-group-name/providers/Microsoft.Network/virtualNetworks/your-vnet-name/subnets/your-subnet-name" # Replace with your actual values
-    tags = {
-      key = "value"
-    }
+    vm_resource_group = run.setup.resource_group
+    subnet_id         = run.setup.subnet
+    tags              = run.setup.common_tags
   }
 
   assert {
@@ -293,6 +160,7 @@ run "windows_vm_case_sensitivity" {
 }
 
 run "unknown_vm" {
+
   command = plan
 
   variables {
@@ -301,11 +169,9 @@ run "unknown_vm" {
     vm_offer          = "WindowsServer"
     vm_sku            = "2022-Datacenter"
     vm_version        = "latest"
-    vm_resource_group = "your-actual-resource-group-name"                                                                                                                                 # Replace with your actual resource group name
-    subnet_id         = "/subscriptions/your-subscription-id/resourceGroups/your-resource-group-name/providers/Microsoft.Network/virtualNetworks/your-vnet-name/subnets/your-subnet-name" # Replace with your actual values
-    tags = {
-      key = "value"
-    }
+    vm_resource_group = run.setup.resource_group
+    subnet_id         = run.setup.subnet
+    tags              = run.setup.common_tags
   }
 
   assert {
@@ -321,3 +187,137 @@ run "unknown_vm" {
     var.vm_type
   ]
 }
+
+# run "linux_vm" {
+#   command = plan
+
+#   variables {
+#     vm_type           = "linux"
+#     vm_publisher_name = "Canonical"
+#     vm_offer          = "UbuntuServer"
+#     vm_sku            = "2022-Datacenter"
+#     vm_version        = "latest"
+#     vm_resource_group = "your-actual-resource-group-name"                                                                                                                                 # Replace with your actual resource group name
+#     subnet_id         = "/subscriptions/your-subscription-id/resourceGroups/your-resource-group-name/providers/Microsoft.Network/virtualNetworks/your-vnet-name/subnets/your-subnet-name" # Replace with your actual values
+#     tags = {
+#       key = "value"
+#     }
+#   }
+
+#   assert {
+#     condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 1
+#     error_message = "Module did not stand up a linux virtual machine"
+#   }
+#   assert {
+#     condition     = length(azurerm_windows_virtual_machine_scale_set.windows_scale_set) == 0
+#     error_message = "Module stood up a windows virtual machine"
+#   }
+# }
+
+# run "linux_vm_case_sensitivity" {
+#   command = plan
+
+#   variables {
+#     vm_type           = "Linux"
+#     vm_publisher_name = "Canonical"
+#     vm_offer          = "UbuntuServer"
+#     vm_sku            = "2022-Datacenter"
+#     vm_version        = "latest"
+#     vm_resource_group = "your-actual-resource-group-name"                                                                                                                                 # Replace with your actual resource group name
+#     subnet_id         = "/subscriptions/your-subscription-id/resourceGroups/your-resource-group-name/providers/Microsoft.Network/virtualNetworks/your-vnet-name/subnets/your-subnet-name" # Replace with your actual values
+#     tags = {
+#       key = "value"
+#     }
+#   }
+
+#   assert {
+#     condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 1
+#     error_message = "Module did not stand up a linux virtual machine"
+#   }
+#   assert {
+#     condition     = length(azurerm_windows_virtual_machine_scale_set.windows_scale_set) == 0
+#     error_message = "Module stood up a windows virtual machine"
+#   }
+# }
+
+# run "windows_vm" {
+#   command = plan
+
+#   variables {
+#     vm_type           = "windows"
+#     vm_publisher_name = "MicrosoftWindowsServer"
+#     vm_offer          = "WindowsServer"
+#     vm_sku            = "2022-Datacenter"
+#     vm_version        = "latest"
+#     vm_resource_group = "your-actual-resource-group-name"                                                                                                                                 # Replace with your actual resource group name
+#     subnet_id         = "/subscriptions/your-subscription-id/resourceGroups/your-resource-group-name/providers/Microsoft.Network/virtualNetworks/your-vnet-name/subnets/your-subnet-name" # Replace with your actual values
+#     tags = {
+#       key = "value"
+#     }
+#   }
+
+#   assert {
+#     condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 0
+#     error_message = "Module stood up a linux virtual machine"
+#   }
+#   assert {
+#     condition     = length(azurerm_windows_virtual_machine_scale_set.windows_scale_set) == 1
+#     error_message = "Module did not stand up a windows virtual machine"
+#   }
+# }
+
+# run "windows_vm_case_sensitivity" {
+#   command = plan
+
+#   variables {
+#     vm_type           = "Windows"
+#     vm_publisher_name = "MicrosoftWindowsServer"
+#     vm_offer          = "WindowsServer"
+#     vm_sku            = "2022-Datacenter"
+#     vm_version        = "latest"
+#     vm_resource_group = "your-actual-resource-group-name"                                                                                                                                 # Replace with your actual resource group name
+#     subnet_id         = "/subscriptions/your-subscription-id/resourceGroups/your-resource-group-name/providers/Microsoft.Network/virtualNetworks/your-vnet-name/subnets/your-subnet-name" # Replace with your actual values
+#     tags = {
+#       key = "value"
+#     }
+#   }
+
+#   assert {
+#     condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 0
+#     error_message = "Module stood up a linux virtual machine"
+#   }
+#   assert {
+#     condition     = length(azurerm_windows_virtual_machine_scale_set.windows_scale_set) == 1
+#     error_message = "Module did not stand up a windows virtual machine"
+#   }
+# }
+
+# run "unknown_vm" {
+#   command = plan
+
+#   variables {
+#     vm_type           = "Hannah Montanah Linux"
+#     vm_publisher_name = "MicrosoftWindowsServer"
+#     vm_offer          = "WindowsServer"
+#     vm_sku            = "2022-Datacenter"
+#     vm_version        = "latest"
+#     vm_resource_group = "your-actual-resource-group-name"                                                                                                                                 # Replace with your actual resource group name
+#     subnet_id         = "/subscriptions/your-subscription-id/resourceGroups/your-resource-group-name/providers/Microsoft.Network/virtualNetworks/your-vnet-name/subnets/your-subnet-name" # Replace with your actual values
+#     tags = {
+#       key = "value"
+#     }
+#   }
+
+#   assert {
+#     condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 0
+#     error_message = "Module stood up a linux virtual machine"
+#   }
+#   assert {
+#     condition     = length(azurerm_windows_virtual_machine_scale_set.windows_scale_set) == 0
+#     error_message = "Module stood up a windows virtual machine"
+#   }
+
+#   expect_failures = [
+#     var.vm_type
+#   ]
+# }
