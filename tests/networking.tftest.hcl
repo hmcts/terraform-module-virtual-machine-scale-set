@@ -61,7 +61,7 @@ run "calculated_nic_name" {
   }
 
   assert {
-    condition     = azurerm_network_interface.vm_nic.name == "net-test-nic"
+    condition     = network_interface.vm_nic.name == "net-test-nic"
     error_message = "NIC name does not match VM name"
   }
 }
@@ -78,7 +78,7 @@ run "custom_nic_name" {
   }
 
   assert {
-    condition     = azurerm_network_interface.vm_nic.name == "my-nic-name"
+    condition     = network_interface.vm_nic.name == "my-nic-name"
     error_message = "NIC name was not overridden by var.nic_name"
   }
 }
@@ -94,7 +94,7 @@ run "calculated_ipconfig_name" {
   }
 
   assert {
-    condition     = azurerm_network_interface.vm_nic.ip_configuration[0].name == "net-test-ipconfig"
+    condition     = network_interface.vm_nic.ip_configuration[0].name == "net-test-ipconfig"
     error_message = "IPConfig name does not match VM name"
   }
 }
@@ -111,7 +111,7 @@ run "custom_ipconfig_name" {
   }
 
   assert {
-    condition     = azurerm_network_interface.vm_nic.ip_configuration[0].name == "my-ipconfig-name"
+    condition     = network_interface.vm_nic.ip_configuration[0].name == "my-ipconfig-name"
     error_message = "IPConfig name was not overridden by var.ipconfig_name"
   }
 }
