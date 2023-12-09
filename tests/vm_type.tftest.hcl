@@ -221,7 +221,7 @@ run "linux_vm_case_sensitivity" {
     vm_type           = "Linux"
     vm_publisher_name = "Canonical"
     vm_offer          = "UbuntuServer"
-    vm_sku            = "22.04-LTS"
+    vm_sku            = "2022-Datacenter"
     vm_version        = "latest"
     vm_resource_group = "your-actual-resource-group-name"                                                                                                                                 # Replace with your actual resource group name
     subnet_id         = "/subscriptions/your-subscription-id/resourceGroups/your-resource-group-name/providers/Microsoft.Network/virtualNetworks/your-vnet-name/subnets/your-subnet-name" # Replace with your actual values

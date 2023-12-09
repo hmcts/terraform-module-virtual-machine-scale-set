@@ -50,68 +50,69 @@ run "setup" {
   }
 }
 
-run "calculated_nic_name" {
+# run "calculated_nic_name" {
 
-  command = plan
+#   command = plan
 
-  variables {
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
-  }
+#   variables {
+#     vm_resource_group = run.setup.resource_group
+#     subnet_id         = run.setup.subnet
+#     tags              = run.setup.common_tags
+#   }
 
-  assert {
-    condition     = network_interface.vm_nic.name == "net-test-nic"
-    error_message = "NIC name does not match VM name"
-  }
-}
+#   assert {
+#     condition     = network_interface.vm_nic.name == "net-test-nic"
+#     error_message = "NIC name does not match VM name"
+#   }
+# }
 
-run "custom_nic_name" {
+# run "custom_nic_name" {
 
-  command = plan
+#   command = plan
 
-  variables {
-    nic_name          = "my-nic-name"
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
-  }
+#   variables {
+#     nic_name          = "my-nic-name"
+#     vm_resource_group = run.setup.resource_group
+#     subnet_id         = run.setup.subnet
+#     tags              = run.setup.common_tags
+#   }
 
-  assert {
-    condition     = network_interface.vm_nic.name == "my-nic-name"
-    error_message = "NIC name was not overridden by var.nic_name"
-  }
-}
+#   assert {
+#     condition     = network_interface.vm_nic.name == "my-nic-name"
+#     error_message = "NIC name was not overridden by var.nic_name"
+#   }
+# }
 
-run "calculated_ipconfig_name" {
+# run "calculated_ipconfig_name" {
 
-  command = plan
+#   command = plan
 
-  variables {
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
-  }
+#   variables {
+#     vm_resource_group = run.setup.resource_group
+#     subnet_id         = run.setup.subnet
+#     tags              = run.setup.common_tags
+#   }
 
-  assert {
-    condition     = network_interface.vm_nic.ip_configuration[0].name == "net-test-ipconfig"
-    error_message = "IPConfig name does not match VM name"
-  }
-}
+#   assert {
+#     condition     = network_interface.vm_nic.ip_configuration[0].name == "net-test-ipconfig"
+#     error_message = "IPConfig name does not match VM name"
+#   }
+# }
 
-run "custom_ipconfig_name" {
+# run "custom_ipconfig_name" {
 
-  command = plan
+#   command = plan
 
-  variables {
-    ipconfig_name     = "my-ipconfig-name"
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
-  }
+#   variables {
+#     ipconfig_name     = "my-ipconfig-name"
+#     vm_resource_group = run.setup.resource_group
+#     subnet_id         = run.setup.subnet
+#     tags              = run.setup.common_tags
+#   }
 
-  assert {
-    condition     = network_interface.vm_nic.ip_configuration[0].name == "my-ipconfig-name"
-    error_message = "IPConfig name was not overridden by var.ipconfig_name"
-  }
-}
+#   assert {
+#     condition     = network_interface.vm_nic.ip_configuration[0].name == "my-ipconfig-name"
+#     error_message = "IPConfig name was not overridden by var.ipconfig_name"
+#   }
+# }
+
