@@ -67,7 +67,7 @@ run "linux_vm" {
     vm_type           = "linux"
     vm_publisher_name = "Canonical"
     vm_offer          = "UbuntuServer"
-    vm_sku            = "22.04-LTS"
+    vm_sku            = "Standard_D8ds_v5"
     vm_version        = "latest"
     vm_resource_group = run.setup.resource_group
     subnet_id         = run.setup.subnet
@@ -92,7 +92,7 @@ run "linux_vm_case_sensitivity" {
     vm_type           = "Linux"
     vm_publisher_name = "Canonical"
     vm_offer          = "UbuntuServer"
-    vm_sku            = "22.04-LTS"
+    vm_sku            = "Standard_D8ds_v5"
     vm_version        = "latest"
     vm_resource_group = run.setup.resource_group
     subnet_id         = run.setup.subnet
