@@ -28,7 +28,7 @@ variables {
   vm_image_sku         = "2022-Datacenter"
   computer_name_prefix = "test-vm"
   vm_instances         = "2"
-  vm_availabilty_zones = "1"
+  vm_availabilty_zones = ["1"]
 
   network_interfaces = {
     nic0 = {

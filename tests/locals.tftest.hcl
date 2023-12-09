@@ -29,7 +29,7 @@ variables {
   vm_sku               = "Standard_D8ds_v5"
   vm_version           = "latest"
   vm_size              = "D2ds_v5"
-  vm_availabilty_zones = "1"
+  vm_availabilty_zones = ["1"]
   vm_image_sku         = "2022-Datacenter"
   vm_instances         = "2"
   computer_name_prefix = "test-vm"
