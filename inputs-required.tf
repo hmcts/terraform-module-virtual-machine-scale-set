@@ -2,8 +2,8 @@ variable "vm_type" {
   type        = string
   description = "The type of the vm scale set, either windows-scale-set or linux-scale-set"
   validation {
-    condition     = contains(["windows-scale-set", "linux-scale-set"], lower(var.vm_type))
-    error_message = "Unknown VM type. Must be either 'windows-scale-set' or 'linux-scale-set'"
+    condition     = contains(["windows", "linux"], lower(var.vm_type))
+    error_message = "Unknown VM type. Must be either 'windows' or 'linux'"
   }
 }
 
