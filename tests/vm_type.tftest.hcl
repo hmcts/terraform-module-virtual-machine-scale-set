@@ -64,7 +64,7 @@ run "linux_vm" {
   command = plan
 
   variables {
-    vm_type           = "linux"
+    vm_type           = "linux-scale-set"
     vm_publisher_name = "Canonical"
     vm_offer          = "UbuntuServer"
     vm_sku            = "Standard_D8ds_v5"
@@ -89,7 +89,7 @@ run "linux_vm_case_sensitivity" {
   command = plan
 
   variables {
-    vm_type           = "Linux"
+    vm_type           = "Linux-scale-set"
     vm_publisher_name = "Canonical"
     vm_offer          = "UbuntuServer"
     vm_sku            = "Standard_D8ds_v5"
@@ -114,7 +114,7 @@ run "windows_vm" {
   command = plan
 
   variables {
-    vm_type           = "windows"
+    vm_type           = "windows-scale-set"
     vm_publisher_name = "MicrosoftWindowsServer"
     vm_offer          = "WindowsServer"
     vm_sku            = "Standard_D8ds_v5"
@@ -139,7 +139,7 @@ run "windows_vm_case_sensitivity" {
   command = plan
 
   variables {
-    vm_type           = "Windows"
+    vm_type           = "Windows-scale-set"
     vm_publisher_name = "MicrosoftWindowsServer"
     vm_offer          = "WindowsServer"
     vm_sku            = "Standard_D8ds_v5"
