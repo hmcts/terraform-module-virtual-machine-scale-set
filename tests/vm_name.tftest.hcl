@@ -23,7 +23,7 @@ variables {
   env                  = "nonprod"
   vm_name              = "disk-test"
   vm_admin_password    = "example-$uper-$EcUrE-password"
-  vm_type              = "windows"
+  vm_type              = "windows-scale-set"
   vm_publisher_name    = "MicrosoftWindowsServer"
   vm_offer             = "WindowsServer"
   vm_sku               = "Standard_D8ds_v5"
