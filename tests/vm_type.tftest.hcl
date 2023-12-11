@@ -59,7 +59,7 @@ run "setup" {
 # assertions against the state created by a plan. The only exception is if we
 # Need to test against values that are only known after an apply. This includes
 # things like resource IDs, IP addresses and VM extensions.
-run "linux_vm" {
+run "linux_vm-scale-set" {
 
   command = plan
 
@@ -84,7 +84,7 @@ run "linux_vm" {
   }
 }
 
-run "linux_vm_case_sensitivity" {
+run "linux_vm-scale-set-case_sensitivity" {
 
   command = plan
 
@@ -109,7 +109,7 @@ run "linux_vm_case_sensitivity" {
   }
 }
 
-run "windows_vm" {
+run "windows_vm-scale-set" {
 
   command = plan
 
@@ -134,7 +134,7 @@ run "windows_vm" {
   }
 }
 
-run "windows_vm_case_sensitivity" {
+run "windows_vm-scale-set-case_sensitivity" {
 
   command = plan
 
