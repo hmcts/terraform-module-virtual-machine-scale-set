@@ -35,7 +35,7 @@ variables {
       name           = "test-nic-vmss-nonprod-uksouth-nic"
       primary        = true
       ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig"
-      #subnet_id      = "network_interface.value.subnet_id"
+      subnet_id      = "network_interface.value.subnet_id"
     }
   }
 }

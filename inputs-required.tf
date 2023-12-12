@@ -68,11 +68,6 @@ variable "vm_availabilty_zones" {
 
 variable "network_interfaces" {
   description = "One or more network_interface can be set here, at least one of the network_interface have to be primary"
-  default = {
-    name           = "nic0"
-    ip_config_name = "ipconfig0"
-    subnet_id      = "/subscriptions/your_subscription_id/resourceGroups/your_rg/providers/Microsoft.Network/virtualNetworks/your_vnet/subnets/your_subnet"
-  }
 }
 variable "vm_instances" {
   type        = number
