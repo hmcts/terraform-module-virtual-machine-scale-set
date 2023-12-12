@@ -138,11 +138,11 @@ run "windows_vm" {
   }
 
   assert {
-    condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 1
+    condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 0
     error_message = "Module stood up a linux virtual machine"
   }
   assert {
-    condition     = length(azurerm_windows_virtual_machine_scale_set.windows_scale_set) == 0
+    condition     = length(azurerm_windows_virtual_machine_scale_set.windows_scale_set) == 1
     error_message = "Module did not stand up a windows virtual machine"
   }
 }
@@ -169,11 +169,11 @@ run "windows_vm_case_sensitivity" {
     }
   }
   assert {
-    condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 1
+    condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 0
     error_message = "Module stood up a linux virtual machine"
   }
   assert {
-    condition     = length(azurerm_windows_virtual_machine_scale_set.windows_scale_set) == 0
+    condition     = length(azurerm_windows_virtual_machine_scale_set.windows_scale_set) == 1
     error_message = "Module did not stand up a windows virtual machine"
   }
 }
@@ -201,7 +201,7 @@ run "unknown_vm" {
   }
 
   assert {
-    condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 1
+    condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 0
     error_message = "Module stood up a linux virtual machine"
   }
   assert {
