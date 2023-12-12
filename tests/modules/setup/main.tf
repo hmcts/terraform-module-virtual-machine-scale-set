@@ -8,14 +8,6 @@ module "common_tags" {
   product     = "sds-platform"
 }
 
-output "nic_name" {
-  value = azurerm_network_interface.vm_nic.name
-}
-
-output "ip_config_name" {
-  value = azurerm_network_interface.vm_nic.ip_configuration[0].name
-}
-
 resource "azurerm_resource_group" "test" {
   name     = "vm-module-scale-set-test-rg"
   location = "UK South"
