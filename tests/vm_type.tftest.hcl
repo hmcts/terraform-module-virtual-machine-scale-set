@@ -29,12 +29,10 @@ variables {
   computer_name_prefix = "test-vm"
   vm_instances         = "2"
   vm_availabilty_zones = ["1"]
-
   network_interfaces = {
-    nic0 = {
-      name           = "test-nic-vmss-nonprod-uksouth-nic"
-      primary        = true
-      ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig"
+    nic0 = { name = "win-test-vmss-nic",
+      primary        = true,
+      ip_config_name = "win-test-vmss-ipconfig",
     }
   }
 }
