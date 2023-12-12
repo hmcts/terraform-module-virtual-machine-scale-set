@@ -146,16 +146,6 @@ run "windows_vm_case_sensitivity" {
     subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
   }
-  variable "network_interfaces" {
-    description = "One or more network_interface can be set here, at least one of the network_interface have to be primary"
-    default = {
-      nic0 = {
-        name           = "nic0"
-        ip_config_name = "ipconfig0"
-        subnet_id      = "/subscriptions/your_subscription_id/resourceGroups/your_rg/providers/Microsoft.Network/virtualNetworks/your_vnet/subnets/your_subnet"
-      }
-    }
-  }
   assert {
     condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) == 0
     error_message = "Module stood up a linux virtual machine"
