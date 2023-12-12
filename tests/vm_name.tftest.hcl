@@ -48,3 +48,55 @@ run "setup" {
     source = "./tests/modules/setup"
   }
 }
+
+# run "short_computer_name" {
+
+#   command = plan
+
+#   variables {
+#     vm_name           = "shortname"
+#     vm_resource_group = run.setup.resource_group
+#     vm_subnet_id      = run.setup.subnet
+#     tags              = run.setup.common_tags
+#   }
+
+#   assert {
+#     condition     = azurerm_windows_virtual_machine.winvm[0].computer_name == "shortname"
+#     error_message = "Computer name does not match var.vm_name"
+#   }
+# }
+
+# run "long_computer_name" {
+
+#   command = plan
+
+#   variables {
+#     vm_name           = "reallyreallylongvirtualmachinenamethatshouldgettruncated"
+#     vm_resource_group = run.setup.resource_group
+#     vm_subnet_id      = run.setup.subnet
+#     tags              = run.setup.common_tags
+#   }
+
+#   assert {
+#     condition     = azurerm_windows_virtual_machine.winvm[0].computer_name == "reallyreallylon"
+#     error_message = "Computer name was not truncated to 15 characters"
+#   }
+# }
+
+# run "custom_computer_name" {
+
+#   command = plan
+
+#   variables {
+#     vm_name           = "example-vm"
+#     computer_name     = "actualname"
+#     vm_resource_group = run.setup.resource_group
+#     vm_subnet_id      = run.setup.subnet
+#     tags              = run.setup.common_tags
+#   }
+
+#   assert {
+#     condition     = azurerm_windows_virtual_machine.winvm[0].computer_name == "actualname"
+#     error_message = "Computer name was not overriden by var.computer_name"
+#   }
+# }
