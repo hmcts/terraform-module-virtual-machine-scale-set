@@ -29,12 +29,6 @@ variables {
   computer_name_prefix = "test-vm"
   vm_instances         = "2"
   vm_availabilty_zones = ["1"]
-  network_interfaces = {
-    nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
-      primary        = true,
-      ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
-    }
-  }
 }
 
 
@@ -70,6 +64,13 @@ run "linux_vm" {
     vm_resource_group = run.setup.resource_group
     subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
+    network_interfaces = {
+      nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
+        primary        = true,
+        ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
+        subnet_id      = run.setup.subnet
+      }
+    }
   }
 
   assert {
