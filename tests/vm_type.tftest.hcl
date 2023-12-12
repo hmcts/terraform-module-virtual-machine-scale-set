@@ -47,7 +47,7 @@ variables {
 # actual resources in azure, but they only last for the duration of the tests
 # and are automatically destroyed at the end of the tests. This does mean that
 # tests can't be run concurrently, so we will need to add some logic to the
-# pipeline to prevent concurrent jobs..
+# pipeline to prevent concurrent jobs.
 
 run "setup" {
   module {
