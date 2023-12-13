@@ -1,5 +1,5 @@
 # only for use when building from ADO and as a quick example to get valid tags
-# if you are building from Jenkins use `var.common_tags` provided by the pipeline
+# if you are building from Jenkins use `var.common_tags` provided by the pipeline.
 module "common_tags" {
   source = "github.com/hmcts/terraform-module-common-tags?ref=master"
 
@@ -8,10 +8,10 @@ module "common_tags" {
   product     = "sds-platform"
 }
 
-resource "azurerm_resource_group" "test" {
-  name     = "vm-module-scale-set-test-rg"
-  location = "UK South"
-}
+# resource "azurerm_resource_group" "test" {
+#   name     = "vm-module-scale-set-test-rg"
+#   location = "UK South"
+# }
 
 resource "azurerm_virtual_network" "test" {
   name                = "vm-module-test-vnet"
