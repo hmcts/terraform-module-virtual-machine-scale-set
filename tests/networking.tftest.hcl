@@ -33,9 +33,6 @@ variables {
   vm_image_sku         = "2022-Datacenter"
   vm_instances         = "2"
   computer_name_prefix = "test-vm"
-  network_interface_ids = [
-    azurerm_network_interface.vm_nic.id,
-  ]
 }
 
 
@@ -50,10 +47,15 @@ run "calculated_nic_name" {
   variables {
     vm_resource_group = run.setup.resource_group
     subnet_id         = run.setup.subnet
+    network_interfaces = run.setup.network
     tags              = run.setup.common_tags
-    network_interface_ids = [
-      azurerm_network_interface.vm_nic.id,
-    ]
+    network_interface_ids = {
+      nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
+        primary        = true,
+        ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
+        subnet_id      = run.setup.subnet
+      }
+
   }
   assert {
     condition     = network_interface.vm_nic.name == "net-test-nic"
@@ -67,9 +69,13 @@ run "custom_nic_name" {
     vm_resource_group = run.setup.resource_group
     subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
-    network_interface_ids = [
-      azurerm_network_interface.vm_nic.id,
-    ]
+    network_interfaces = run.setup.network
+    network_interface_ids = {
+      nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
+        primary        = true,
+        ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
+        subnet_id      = run.setup.subnet
+      }
   }
   assert {
     condition     = network_interface.vm_nic.name == "my-nic-name"
@@ -82,9 +88,13 @@ run "calculated_ipconfig_name" {
     vm_resource_group = run.setup.resource_group
     subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
-    network_interface_ids = [
-      azurerm_network_interface.vm_nic.id,
-    ]
+    network_interfaces = run.setup.network
+    network_interface_ids = {
+      nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
+        primary        = true,
+        ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
+        subnet_id      = run.setup.subnet
+      }
   }
   assert {
     condition     = network_interface.vm_nic.ip_configuration[0].name == "net-test-ipconfig"
@@ -98,9 +108,13 @@ run "custom_ipconfig_name" {
     vm_resource_group = run.setup.resource_group
     subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
-    network_interface_ids = [
-      azurerm_network_interface.vm_nic.id,
-    ]
+    network_interfaces = run.setup.network
+    network_interface_ids = {
+      nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
+        primary        = true,
+        ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
+        subnet_id      = run.setup.subnet
+      }
   }
   assert {
     condition     = network_interface.vm_nic.ip_configuration[0].name == "my-ipconfig-name"
