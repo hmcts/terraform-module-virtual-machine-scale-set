@@ -70,10 +70,10 @@ variable "network_interfaces" {
   description = "One or more network_interface can be set here, at least one of the network_interface have to be primary"
 }
 
-variable "nic_name" {
-  type        = string
-  description = "The name of the NIC to create & associate with the virtual machine."
-  default     = null
+variable "network_interface_ids" {
+  description = "List of network interface IDs"
+  type        = list(string)
+  default     = []
 }
 
 variable "vm_instances" {

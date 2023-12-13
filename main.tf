@@ -14,6 +14,20 @@ resource "azurerm_windows_virtual_machine_scale_set" "windows_scale_set" {
 
   tags = var.tags
 
+  resource "azurerm_network_interface" "shared_dgw_nic" {
+    for_each = { for idx, entry in var.vm_zones : "${var.project}-nic-${entry.vm_count}" => entry }
+
+    name                = each.key
+    location            = each.value.location
+    resource_group_name = var.shared_dgw_rg_name
+
+    ip_configuration {
+      name                          = "ipconfig-${each.key}"
+      subnet_id                     = each.value.subnet_id
+      private_ip_address_allocation = "Dynamic"
+    }
+  }
+
   source_image_reference {
     publisher = var.vm_publisher_name
     offer     = var.vm_offer
