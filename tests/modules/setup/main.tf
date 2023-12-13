@@ -9,7 +9,7 @@ module "common_tags" {
 }
 
 resource "azurerm_resource_group" "test" {
-  name     = "vm-module-scale-set-test"
+  name     = "vm-module-scale-set-test-rg"
   location = "UK South"
 }
 
