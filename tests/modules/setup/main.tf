@@ -8,10 +8,10 @@ module "common_tags" {
   product     = "sds-platform"
 }
 
-# resource "azurerm_resource_group" "test" {
-#   name     = "vm-module-scale-set-test-rg"
-#   location = "UK South"
-# }
+resource "azurerm_resource_group" "test" {
+  name     = "vm-module-scale-set-test-rg"
+  location = "UK South"
+}
 
 resource "azurerm_virtual_network" "test" {
   name                = "vm-module-test-vnet"
