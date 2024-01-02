@@ -20,6 +20,13 @@ variable "vm_resource_group" {
 variable "subnet_id" {
   type        = string
   description = "Subnet ID where the VMSS going to deploy"
+  default     = "default_subnet_id_value"
+}
+
+variable "network_interfaces" {
+  type        = string
+  description = "Network interfaces value"
+  default     = "default_network_interfaces_value"
 }
 
 variable "vm_admin_password" {
