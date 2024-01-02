@@ -113,7 +113,7 @@ An example can be found [here](https://github.com/hmcts/terraform-module-virtual
 | <a name="input_splunk_pass4symmkey"></a> [splunk\_pass4symmkey](#input\_splunk\_pass4symmkey) | The pass4symmkey to use when communicating with splunk. | `string` | `""` | no |
 | <a name="input_splunk_password"></a> [splunk\_password](#input\_splunk\_password) | The password to use when communicating with splunk. | `string` | `""` | no |
 | <a name="input_splunk_username"></a> [splunk\_username](#input\_splunk\_username) | The username to use when communicating with splunk. | `string` | `""` | no |
-| <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | Subnet ID where the VMSS going to deploy | `string` | `"default_subnet_id_value"` | no |
+| <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | Subnet ID where the VMSS going to deploy | `string` | n/a | yes |
 | <a name="input_systemassigned_identity"></a> [systemassigned\_identity](#input\_systemassigned\_identity) | Enable System Assigned managed identity for the virtual machine. | `bool` | `false` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | The tags to apply to the virtual Machine Scale Set and associated resources. | `map(string)` | n/a | yes |
 | <a name="input_upgrade_mode"></a> [upgrade\_mode](#input\_upgrade\_mode) | Specifies how Upgrades should be performed to Virtual Machine Instances. Possible values are Automatic, Manual and Rolling | `string` | `"Manual"` | no |
