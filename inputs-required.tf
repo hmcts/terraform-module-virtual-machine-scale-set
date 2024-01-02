@@ -68,6 +68,8 @@ variable "vm_availabilty_zones" {
 }
 
 variable "network_interfaces" {
+  type        = list(string)
+  default     = []
   description = "One or more network_interface can be set here, at least one of the network_interface have to be primary"
 }
 
