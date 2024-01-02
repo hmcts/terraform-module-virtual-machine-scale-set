@@ -100,6 +100,7 @@ run "custom_ipconfig_name" {
     vm_resource_group = run.setup.resource_group
     vm_subnet_id      = run.setup.subnet
     tags              = run.setup.common_tags
+    subnet_id         = var.subnet_id
   }
 
   assert {
