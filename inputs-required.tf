@@ -23,12 +23,6 @@ variable "subnet_id" {
   default     = "default_subnet_id_value"
 }
 
-variable "network_interfaces" {
-  type        = string
-  description = "Network interfaces value"
-  default     = "default_network_interfaces_value"
-}
-
 variable "vm_admin_password" {
   type        = string
   sensitive   = true
