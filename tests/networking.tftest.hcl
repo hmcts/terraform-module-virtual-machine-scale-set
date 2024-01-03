@@ -33,6 +33,13 @@ variables {
   vm_image_sku         = "2022-Datacenter"
   vm_instances         = "2"
   computer_name_prefix = "test-vm"
+  network_interfaces = {
+    nic0 = {
+      name           = "test-nic-vmss-nonprod-uksouth-nic"
+      primary        = true
+      ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig"
+    }
+  }
 }
 
 
