@@ -82,7 +82,7 @@ run "calculated_ipconfig_name" {
 
   variables {
     vm_resource_group = run.setup.resource_group
-    vm_subnet_id      = run.setup.subnet
+    subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
   }
 
@@ -99,9 +99,8 @@ run "custom_ipconfig_name" {
   variables {
     ipconfig_name     = "my-ipconfig-name"
     vm_resource_group = run.setup.resource_group
-    vm_subnet_id      = run.setup.subnet
+    subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
-    subnet_id         = var.subnet_id
   }
 
   assert {
