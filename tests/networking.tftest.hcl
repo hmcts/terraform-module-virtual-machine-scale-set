@@ -111,7 +111,9 @@ run "custom_ipconfig_name" {
   }
 
   assert {
-    condition = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].network_interface[0].name == "net-test-nic"
+    for_each = toset(azurerm_windows_virtual_machine_scale_set.windows_scale_set[*].network_interface[*].name)
+
+    condition = each.value == "net-test-nic"
 
     error_message = "IPConfig name was not overridden by var.ipconfig_name"
   }
