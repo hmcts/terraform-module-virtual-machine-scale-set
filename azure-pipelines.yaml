@@ -48,4 +48,4 @@ stages:
             scriptLocation: 'inlineScript'
             inlineScript: |
               terraform init
-              terraform test -var="subnet_id=$(subnet_id)" -var="network_interfaces=$(network_interfaces)"
+              terraform test 
