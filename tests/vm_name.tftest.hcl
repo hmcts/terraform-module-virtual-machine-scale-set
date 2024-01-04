@@ -61,7 +61,7 @@ run "short_computer_name" {
   }
 
   assert {
-    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].computer_name_prefix == "windows-scale-set"
+    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].computer_name_prefix == "test-vm"
     error_message = "Computer name does not match var.vm_name"
   }
 }
