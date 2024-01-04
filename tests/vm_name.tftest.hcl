@@ -54,14 +54,14 @@ run "short_computer_name" {
   command = plan
 
   variables {
-    vm_name           = "shortname"
+    vm_name           = "windows-scale-set"
     vm_resource_group = run.setup.resource_group
     subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
   }
 
   assert {
-    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].computer_name == "shortname"
+    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].computer_name_prefix == "windows-scale-set"
     error_message = "Computer name does not match var.vm_name"
   }
 }
@@ -78,7 +78,7 @@ run "long_computer_name" {
   }
 
   assert {
-    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].computer_name == "reallyreallylon"
+    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].computer_name_prefix == "reallyreallylon"
     error_message = "Computer name was not truncated to 15 characters"
   }
 }
@@ -96,7 +96,7 @@ run "custom_computer_name" {
   }
 
   assert {
-    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].computer_name == "actualname"
+    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].computer_name_prefix == "actualname"
     error_message = "Computer name was not overriden by var.computer_name"
   }
 }
