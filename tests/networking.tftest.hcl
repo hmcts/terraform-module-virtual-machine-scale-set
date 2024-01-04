@@ -50,27 +50,24 @@ run "setup" {
 }
 
 run "calculated_nic_name" {
-
   command = plan
 
   variables {
     vm_resource_group = run.setup.resource_group
     subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
-
   }
 
   assert {
-  condition = any([
-    for nic_instance in azurerm_windows_virtual_machine_scale_set.windows_scale_set[*].network_interface :
-    nic_instance[0].name == "net-test-nic"
-  ])
-  error_message = "NIC name does not match VM name"
+    condition = any([
+      for nic_instance in azurerm_windows_virtual_machine_scale_set.windows_scale_set[*].network_interface :
+      nic_instance[0].name == "net-test-nic"
+    ])
+    error_message = "NIC name does not match VM name"
+  }
 }
 
-
 run "custom_nic_name" {
-
   command = plan
 
   variables {
@@ -87,7 +84,6 @@ run "custom_nic_name" {
 }
 
 run "calculated_ipconfig_name" {
-
   command = plan
 
   variables {
@@ -103,7 +99,6 @@ run "calculated_ipconfig_name" {
 }
 
 run "custom_ipconfig_name" {
-
   command = plan
 
   variables {
@@ -114,8 +109,7 @@ run "custom_ipconfig_name" {
   }
 
   assert {
-    condition = azurerm_network_interface.network_interface.name == "net-test-nic" == "net-test-nic"
-
+    condition     = azurerm_network_interface.network_interface.name == "net-test-nic"
     error_message = "IPConfig name was not overridden by var.ipconfig_name"
   }
 }
