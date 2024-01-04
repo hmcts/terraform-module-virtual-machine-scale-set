@@ -33,7 +33,9 @@ variables {
   vm_image_sku         = "2022-Datacenter"
   vm_instances         = "2"
   computer_name_prefix = "test-vm"
+  vm_resource_group    = run.setup.resource_group
   subnet_id            = run.setup.subnet
+  tags                 = run.setup.common_tags
   network_interfaces = {
     nic0 = {
       name           = "test-nic-vmss-nonprod-uksouth-nic",
