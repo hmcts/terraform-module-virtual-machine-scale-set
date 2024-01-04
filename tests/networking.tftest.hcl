@@ -76,7 +76,7 @@ run "calculated_nic_linux_name" {
 
 
   variables {
-    vm_type           = "Hannah Montanah Linux"
+    vm_type           = "linux-scale-set"
     vm_publisher_name = "MicrosoftWindowsServer"
     vm_offer          = "WindowsServer"
     vm_sku            = "Standard_D8ds_v5"
