@@ -77,9 +77,10 @@ run "calculated_nic_name_linux" {
 
   variables {
     vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    vm_type           = "linux-scale-set"
-    tags              = run.setup.common_tags
+    #subnet_id         = run.setup.subnet
+    subnet_id = run.var.subnet_id
+    vm_type   = "linux-scale-set"
+    tags      = run.setup.common_tags
   }
 
   assert {
