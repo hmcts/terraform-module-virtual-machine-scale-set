@@ -96,7 +96,7 @@ run "custom_computer_name" {
   }
 
   assert {
-    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].computer_name_prefix == "actualname"
+    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].computer_name_prefix == "test-vm"
     error_message = "Computer name was not overriden by var.computer_name"
   }
 }
