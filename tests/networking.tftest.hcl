@@ -38,6 +38,7 @@ variables {
       name           = "test-nic-vmss-nonprod-uksouth-nic"
       primary        = true
       ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig"
+      subnet_id      = run.setup.subnet
     }
   }
 }
@@ -77,10 +78,9 @@ run "calculated_nic_name_linux" {
 
   variables {
     vm_resource_group = run.setup.resource_group
-    #subnet_id         = run.setup.subnet
-    subnet_id = run.var.subnet_id
-    vm_type   = "linux-scale-set"
-    tags      = run.setup.common_tags
+    subnet_id         = run.setup.subnet
+    vm_type           = "linux-scale-set"
+    tags              = run.setup.common_tags
   }
 
   assert {
