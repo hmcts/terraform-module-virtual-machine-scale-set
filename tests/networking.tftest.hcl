@@ -55,7 +55,7 @@ run "calculated_nic_name" {
 
   variables {
     vm_resource_group = run.setup.resource_group
-    vm_subnet_id      = run.setup.subnet
+    subnet_id         = run.setup.subnet
     tags              = run.setup.common_tags
   }
 
