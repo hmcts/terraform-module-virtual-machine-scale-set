@@ -60,7 +60,7 @@ run "calculated_nic_name" {
   }
 
   assert {
-    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set.network_interface[0].name == "net-test-nic"
+    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].network_interface[0].name == "net-test-nic"
     error_message = "NIC name does not match VM name"
   }
 }
@@ -76,7 +76,7 @@ run "custom_nic_name" {
   }
 
   assert {
-    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set.network_interface[0].name == "my-nic-name"
+    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].network_interface[0].name == "my-nic-name"
     error_message = "NIC name was not overridden by var.nic_name"
   }
 }
@@ -91,7 +91,7 @@ run "calculated_ipconfig_name" {
   }
 
   assert {
-    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set.network_interface[0].ip_configuration[0].name == "net-test-ipconfig"
+    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].network_interface[0].ip_configuration[0].name == "net-test-ipconfig"
     error_message = "IPConfig name does not match VM name"
   }
 }
@@ -107,7 +107,7 @@ run "custom_ipconfig_name" {
   }
 
   assert {
-    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set.network_interface[0].name == "net-test-nic"
+    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set[0].network_interface[0].name == "net-test-nic"
     error_message = "IPConfig name was not overridden by var.ipconfig_name"
   }
 }
