@@ -71,7 +71,7 @@ run "calculated_nic_name" {
 }
 
 
-run "calculated_nic_name" {
+run "calculated_nic_name_linux" {
 
   command = plan
 
