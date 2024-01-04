@@ -38,11 +38,9 @@ variables {
       name           = "test-nic-vmss-nonprod-uksouth-nic",
       primary        = true,
       ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
-      #subnet_id      = run.setup.subnet
     }
   }
 }
-
 
 run "setup" {
   module {
@@ -72,25 +70,37 @@ run "calculated_nic_name" {
 }
 
 
-# run "calculated_nic_name_linux" {
+run "calculated_nic_linux_name" {
 
-#   command = plan
+  command = plan
 
-#   variables {
-#     vm_resource_group = run.setup.resource_group
-#     subnet_id         = run.setup.subnet
-#     vm_type           = "linux-scale-set"
-#     tags              = run.setup.common_tags
-#   }
 
-#   assert {
-#     condition     = azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].network_interface[0].name == "test-nic-vmss-nonprod-uksouth-nic"
-#     error_message = "NIC name does not match VM name"
-#   }
+  variables {
+    vm_type           = "Hannah Montanah Linux"
+    vm_publisher_name = "MicrosoftWindowsServer"
+    vm_offer          = "WindowsServer"
+    vm_sku            = "Standard_D8ds_v5"
+    vm_version        = "latest"
+    vm_resource_group = run.setup.resource_group
+    subnet_id         = run.setup.subnet
+    tags              = run.setup.common_tags
+    network_interfaces = {
+      nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
+        primary        = true,
+        ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
+        subnet_id      = run.setup.subnet
+      }
+    }
+  }
 
-#   assert {
-#     condition     = azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].network_interface[0].ip_configuration[0].name == "test-nic-vmss-nonprod-uksouth-ipconfig"
-#     error_message = "IPConfig name does not match VM name"
-#   }
-# }
+  assert {
+    condition     = azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].network_interface[0].name == "test-nic-vmss-nonprod-uksouth-nic"
+    error_message = "NIC name does not match VM name"
+  }
+
+  assert {
+    condition     = azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].network_interface[0].ip_configuration[0].name == "test-nic-vmss-nonprod-uksouth-ipconfig"
+    error_message = "IPConfig name does not match VM name"
+  }
+}
 
