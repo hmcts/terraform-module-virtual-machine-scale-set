@@ -71,21 +71,25 @@ run "calculated_nic_name" {
 }
 
 
-#####
-# run "calculated_nic_name_linux" {
+run "calculated_nic_name" {
 
-#   command = plan
+  command = plan
 
-#   variables {
-#     vm_resource_group = run.setup.resource_group
-#     subnet_id         = run.setup.subnet
-#     vm_type              = "linux-scale-set"
+  variables {
+    vm_resource_group = run.setup.resource_group
+    subnet_id         = run.setup.subnet
+    vm_type           = "linux-scale-set"
+    tags              = run.setup.common_tags
+  }
 
-#     tags              = run.setup.common_tags
-#   }
+  assert {
+    condition     = azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].network_interface[0].name == "test-nic-vmss-nonprod-uksouth-nic"
+    error_message = "NIC name does not match VM name"
+  }
 
-#   assert {
-#     condition     = azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].network_interface[0].name == "net-test-nic"
-#     error_message = "NIC name does not match VM name"
-#   }
-# }
+  assert {
+    condition     = azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].network_interface[0].ip_configuration[0].name == "test-nic-vmss-nonprod-uksouth-ipconfig"
+    error_message = "IPConfig name does not match VM name"
+  }
+}
+
