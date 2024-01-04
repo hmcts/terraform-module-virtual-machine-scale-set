@@ -113,7 +113,8 @@ run "short_cLinux_omputer_name" {
   }
 
   assert {
-    condition     = azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].computer_name_prefix == "test-vm"
+    condition = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) > 0 && azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].computer_name_prefix == "test-vm"
+
     error_message = "Computer name does not match var.vm_name"
   }
 }
@@ -130,7 +131,7 @@ run "long_cLinux_omputer_name" {
   }
 
   assert {
-    condition     = azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].computer_name_prefix == "test-vm"
+    condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) > 0 && azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].computer_name_prefix == "test-vm"
     error_message = "Computer name was not truncated to 15 characters"
   }
 }
@@ -148,7 +149,7 @@ run "custom_linux_computer_name" {
   }
 
   assert {
-    condition     = azurerm_linux_virtual_machine_scale_set.linux_scale_set_scale_set[0].computer_name_prefix == "test-vm"
+    condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) > 0 && azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].computer_name_prefix == "test-vm"
     error_message = "Computer name was not overriden by var.computer_name"
   }
 }
