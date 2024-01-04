@@ -61,10 +61,13 @@ run "calculated_nic_name" {
   }
 
   assert {
-    condition     = azurerm_windows_virtual_machine_scale_set.windows_scale_set.network_interface[0].name == "net-test-nic"
-    error_message = "NIC name does not match VM name"
-  }
+  condition = any([
+    for nic_instance in azurerm_windows_virtual_machine_scale_set.windows_scale_set[*].network_interface :
+    nic_instance[0].name == "net-test-nic"
+  ])
+  error_message = "NIC name does not match VM name"
 }
+
 
 run "custom_nic_name" {
 
