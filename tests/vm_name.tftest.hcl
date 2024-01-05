@@ -89,7 +89,7 @@ run "custom_computer_name" {
 
   variables {
     vm_name              = "example-vm"
-    computer_name_prefix = "actualname"
+    computer_name_prefix = "test-vm"
     vm_resource_group    = run.setup.resource_group
     subnet_id            = run.setup.subnet
     tags                 = run.setup.common_tags
