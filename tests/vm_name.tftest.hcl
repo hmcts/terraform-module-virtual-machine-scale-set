@@ -88,11 +88,11 @@ run "custom_computer_name" {
   command = plan
 
   variables {
-    vm_name           = "example-vm"
-    computer_name     = "actualname"
-    vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
-    tags              = run.setup.common_tags
+    vm_name              = "example-vm"
+    computer_name_prefix = "actualname"
+    vm_resource_group    = run.setup.resource_group
+    subnet_id            = run.setup.subnet
+    tags                 = run.setup.common_tags
   }
 
   assert {
@@ -101,55 +101,4 @@ run "custom_computer_name" {
   }
 }
 
-# run "short_cLinux_omputer_name" {
 
-#   command = plan
-
-#   variables {
-#     vm_name           = "linux-scale-set"
-#     vm_resource_group = run.setup.resource_group
-#     subnet_id         = run.setup.subnet
-#     tags              = run.setup.common_tags
-#   }
-
-#   assert {
-#     condition = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) > 0 && azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].computer_name_prefix == "test-vm"
-
-#     error_message = "Computer name does not match var.vm_name"
-#   }
-# }
-
-# run "long_cLinux_omputer_name" {
-
-#   command = plan
-
-#   variables {
-#     vm_name           = "reallyreallylongvirtualmachinenamethatshouldgettruncated"
-#     vm_resource_group = run.setup.resource_group
-#     subnet_id         = run.setup.subnet
-#     tags              = run.setup.common_tags
-#   }
-
-#   assert {
-#     condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) > 0 && azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].computer_name_prefix == "test-vm"
-#     error_message = "Computer name was not truncated to 15 characters"
-#   }
-# }
-
-# run "custom_linux_computer_name" {
-
-#   command = plan
-
-#   variables {
-#     vm_name           = "example-vm"
-#     computer_name     = "actualname"
-#     vm_resource_group = run.setup.resource_group
-#     subnet_id         = run.setup.subnet
-#     tags              = run.setup.common_tags
-#   }
-
-#   assert {
-#     condition     = length(azurerm_linux_virtual_machine_scale_set.linux_scale_set) > 0 && azurerm_linux_virtual_machine_scale_set.linux_scale_set[0].computer_name_prefix == "test-vm"
-#     error_message = "Computer name was not overriden by var.computer_name"
-#   }
-# }
