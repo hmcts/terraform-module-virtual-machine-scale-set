@@ -32,7 +32,7 @@ variables {
 }
 
 
-# The virtual machine module depends on some external infrastructure that needs
+# The virtual machine Scale Set module depends on some external infrastructure that needs
 # to be present before we can run a plan against it. The 'setup' run stands up
 # a resource group, virtual network, subnet and common tags. I think setup
 # needs to be applied in order to know the value of the outputs. This creates

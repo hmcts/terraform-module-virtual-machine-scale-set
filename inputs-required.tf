@@ -71,12 +71,6 @@ variable "network_interfaces" {
   default     = ""
 }
 
-# variable "network_interface_ids" {
-#   description = "List of network interface IDs"
-#   type        = list(string)
-#   default     = []
-# }
-
 variable "vm_instances" {
   type        = number
   description = "Number of VM instances required"
