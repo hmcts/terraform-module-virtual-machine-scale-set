@@ -1,6 +1,10 @@
 variable "vm_type" {
   type        = string
   description = "The type of the vm scale set, either windows-scale-set or linux-scale-set"
+  validation {
+    condition     = contains(["windows-scale-set", "linux-scale-set"], lower(var.vm_type))
+    error_message = "Unknown VM type. Must be either 'windows-scale-set' or 'linux-scale-set'"
+  }
 }
 
 variable "vm_name" {
@@ -65,6 +69,7 @@ variable "vm_availabilty_zones" {
 variable "network_interfaces" {
   description = "One or more network_interface can be set here, at least one of the network_interface have to be primary"
 }
+
 variable "vm_instances" {
   type        = number
   description = "Number of VM instances required"
@@ -78,4 +83,3 @@ variable "tags" {
   type        = map(string)
   description = "The tags to apply to the virtual Machine Scale Set and associated resources."
 }
-
