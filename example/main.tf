@@ -2,6 +2,7 @@ module "windows-vm-ss" {
   providers = {
     azurerm.cnp = azurerm.cnp
     azurerm.soc = azurerm.soc
+    azurerm.dcr = azurerm.dcr
     azurerm     = azurerm
   }
   source               = "../"

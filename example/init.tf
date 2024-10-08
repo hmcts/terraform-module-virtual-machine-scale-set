@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source                = "hashicorp/azurerm"
-      configuration_aliases = [azurerm.cnp, azurerm.soc]
+      configuration_aliases = [azurerm.cnp, azurerm.soc, azurerm.dcr]
       version               = ">= 3.75.0"
     }
   }
@@ -20,7 +20,12 @@ provider "azurerm" {
   skip_provider_registration = "true"
   subscription_id            = "8ae5b3b6-0b12-4888-b894-4cec33c92292"
 }
-
+provider "azurerm" {
+  features {}
+  alias                      = "dcr"
+  skip_provider_registration = "true"
+  subscription_id            = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
+}
 provider "azurerm" {
   features {}
   subscription_id = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
