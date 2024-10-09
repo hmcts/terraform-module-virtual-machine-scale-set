@@ -54,9 +54,11 @@ resource "azurerm_windows_virtual_machine_scale_set" "windows_scale_set" {
       primary = network_interface.value.primary
 
       ip_configuration {
-        name      = network_interface.value.ip_config_name
-        primary   = try(network_interface.value.primary, false)
-        subnet_id = var.subnet_id
+        name                                   = network_interface.value.ip_config_name
+        primary                                = try(network_interface.value.primary, true)
+        subnet_id                              = network_interface.value.subnet_id
+        load_balancer_backend_address_pool_ids = network_interface.value.load_balancer_backend_address_pool_ids
+        load_balancer_inbound_nat_rules_ids    = network_interface.value.load_balancer_inbound_nat_rules_ids
       }
     }
   }
@@ -68,6 +70,8 @@ resource "azurerm_windows_virtual_machine_scale_set" "windows_scale_set" {
       enable_automatic_os_upgrade = automatic_os_upgrade_policy.value.enable_automatic_os_upgrade
     }
   }
+
+
 }
 
 
@@ -113,9 +117,11 @@ resource "azurerm_linux_virtual_machine_scale_set" "linux_scale_set" {
       primary = network_interface.value.primary
 
       ip_configuration {
-        name      = network_interface.value.ip_config_name
-        primary   = try(network_interface.value.primary, false)
-        subnet_id = network_interface.value.subnet_id
+        name                                   = network_interface.value.ip_config_name
+        primary                                = try(network_interface.value.primary, true)
+        subnet_id                              = network_interface.value.subnet_id
+        load_balancer_backend_address_pool_ids = network_interface.value.load_balancer_backend_address_pool_ids
+        load_balancer_inbound_nat_rules_ids    = network_interface.value.load_balancer_inbound_nat_rules_ids
       }
     }
   }
@@ -127,4 +133,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "linux_scale_set" {
       enable_automatic_os_upgrade = automatic_os_upgrade_policy.value.enable_automatic_os_upgrade
     }
   }
+
+  
 }
