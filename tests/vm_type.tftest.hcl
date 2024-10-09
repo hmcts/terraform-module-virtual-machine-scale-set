@@ -74,7 +74,9 @@ run "linux_vm" {
       nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
         primary        = true,
         ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
-        subnet_id      = run.setup.subnet
+        subnet_id      = run.setup.subnet,
+        load_balancer_backend_address_pool_ids = [],
+        load_balancer_inbound_nat_rules_ids    = []
       }
     }
   }
@@ -106,7 +108,9 @@ run "linux_vm_sensitivity" {
       nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
         primary        = true,
         ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
-        subnet_id      = run.setup.subnet
+        subnet_id      = run.setup.subnet,
+        load_balancer_backend_address_pool_ids = [],
+        load_balancer_inbound_nat_rules_ids    = []
       }
     }
   }
@@ -138,7 +142,9 @@ run "windows_vm" {
       nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
         primary        = true,
         ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
-        subnet_id      = run.setup.subnet
+        subnet_id      = run.setup.subnet,
+        load_balancer_backend_address_pool_ids = [],
+        load_balancer_inbound_nat_rules_ids    = []
       }
     }
   }
@@ -170,7 +176,9 @@ run "windows_vm_case_sensitivity" {
       nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
         primary        = true,
         ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
-        subnet_id      = run.setup.subnet
+        subnet_id      = run.setup.subnet,
+        load_balancer_backend_address_pool_ids = [],
+        load_balancer_inbound_nat_rules_ids    = []
       }
     }
   }
@@ -201,7 +209,9 @@ run "unknown_vm" {
       nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
         primary        = true,
         ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
-        subnet_id      = run.setup.subnet
+        subnet_id      = run.setup.subnet,
+        load_balancer_backend_address_pool_ids = [],
+        load_balancer_inbound_nat_rules_ids    = []
       }
     }
   }
