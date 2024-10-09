@@ -134,5 +134,5 @@ resource "azurerm_linux_virtual_machine_scale_set" "linux_scale_set" {
     }
   }
 
-  tags = var.tags
+  
 }
