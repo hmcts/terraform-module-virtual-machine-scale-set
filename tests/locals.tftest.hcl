@@ -45,7 +45,7 @@ variables {
       name           = "test-nic-vmss-nonprod-uksouth-nic"
       primary        = true
       ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig"
-      subnet_id                              = run.setup.subnet
+      subnet_id                              = ""
       load_balancer_backend_address_pool_ids = []
       load_balancer_inbound_nat_rules_ids    = []
     }
