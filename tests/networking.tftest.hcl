@@ -91,13 +91,13 @@ run "calculated_nic_linux_name" {
     vm_sku            = "Standard_D8ds_v5"
     vm_version        = "latest"
     vm_resource_group = run.setup.resource_group
-    subnet_id         = run.setup.subnet
+    
     tags              = run.setup.common_tags
     network_interfaces = {
       nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
         primary        = true,
         ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
-        subnet_id      = "",
+        subnet_id      = "/subscriptions/64b1c6d6-1481-44ad-b620-d8fe26a2c768/resourceGroups/vm-module-scale-set-test-rg/providers/Microsoft.Network/virtualNetworks/vm-module-test-vnet/subnets/vm-module-test-subnet",
         load_balancer_backend_address_pool_ids = [],
         load_balancer_inbound_nat_rules_ids    = []
       }

@@ -39,13 +39,13 @@ variables {
   vm_image_sku         = "2022-Datacenter"
   vm_instances         = "2"
   computer_name_prefix = "test-vm"
-
+ 
   network_interfaces = {
     nic0 = {
       name           = "test-nic-vmss-nonprod-uksouth-nic"
       primary        = true
       ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig"
-      subnet_id                              = "",
+      subnet_id                              = "/subscriptions/64b1c6d6-1481-44ad-b620-d8fe26a2c768/resourceGroups/vm-module-scale-set-test-rg/providers/Microsoft.Network/virtualNetworks/vm-module-test-vnet/subnets/vm-module-test-subnet",
       load_balancer_backend_address_pool_ids = [],
       load_balancer_inbound_nat_rules_ids    = []
     }
