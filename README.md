@@ -48,8 +48,8 @@ An example can be found [here](https://github.com/hmcts/terraform-module-virtual
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | n/a |
-| <a name="provider_random"></a> [random](#provider\_random) | n/a |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.62.1 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.5.1 |
 
 ## Modules
 
@@ -76,7 +76,7 @@ An example can be found [here](https://github.com/hmcts/terraform-module-virtual
 | <a name="input_accelerated_networking_enabled"></a> [accelerated\_networking\_enabled](#input\_accelerated\_networking\_enabled) | Enable accelerated networks on the NIC for the virtual machine. | `bool` | `false` | no |
 | <a name="input_additional_script_name"></a> [additional\_script\_name](#input\_additional\_script\_name) | The path to a script to run against the virtual machine. | `string` | `null` | no |
 | <a name="input_additional_script_uri"></a> [additional\_script\_uri](#input\_additional\_script\_uri) | URI of a publically accessible script to run against the virtual machine. | `string` | `null` | no |
-| <a name="input_automatic_os_upgrade_policy"></a> [automatic\_os\_upgrade\_policy](#input\_automatic\_os\_upgrade\_policy) | A map of automatic\_os\_upgrade\_policy policy | <pre>map(<br/>    object(<br/>      {<br/>        disable_automatic_rollback  = bool,<br/>        enable_automatic_os_upgrade = bool<br/>      }<br/>    )<br/>  )</pre> | `{}` | no |
+| <a name="input_automatic_os_upgrade_policy"></a> [automatic\_os\_upgrade\_policy](#input\_automatic\_os\_upgrade\_policy) | A map of automatic\_os\_upgrade\_policy policy | <pre>map(<br>    object(<br>      {<br>        disable_automatic_rollback  = bool,<br>        enable_automatic_os_upgrade = bool<br>      }<br>    )<br>  )</pre> | `{}` | no |
 | <a name="input_boot_diagnostics_enabled"></a> [boot\_diagnostics\_enabled](#input\_boot\_diagnostics\_enabled) | Whether to enable boot diagnostics. | `bool` | `true` | no |
 | <a name="input_boot_storage_uri"></a> [boot\_storage\_uri](#input\_boot\_storage\_uri) | The URI of the storage to use for boot diagnostics. | `string` | `null` | no |
 | <a name="input_computer_name_prefix"></a> [computer\_name\_prefix](#input\_computer\_name\_prefix) | Enter Computer name prefix, it should be not more than 9 characters | `string` | n/a | yes |
@@ -96,7 +96,7 @@ An example can be found [here](https://github.com/hmcts/terraform-module-virtual
 | <a name="input_ipconfig_name"></a> [ipconfig\_name](#input\_ipconfig\_name) | The name of the IPConfig to asssoicate with the NIC. | `string` | `null` | no |
 | <a name="input_kv_name"></a> [kv\_name](#input\_kv\_name) | The name ofthe KeyVault used to store the customer-managed key. | `string` | `null` | no |
 | <a name="input_kv_rg_name"></a> [kv\_rg\_name](#input\_kv\_rg\_name) | The name of the resource group, containing the KeyVault used to store the customer-managed key. | `string` | `null` | no |
-| <a name="input_managed_disks"></a> [managed\_disks](#input\_managed\_disks) | A map of managed disks to create & attach to the virtual machine. | <pre>map(<br/>    object(<br/>      {<br/>        storage_account_type = string,<br/>        disk_create_option   = string,<br/>        disk_size_gb         = string,<br/>        disk_lun             = string,<br/>        disk_caching         = string<br/>      }<br/>    )<br/>  )</pre> | `{}` | no |
+| <a name="input_managed_disks"></a> [managed\_disks](#input\_managed\_disks) | A map of managed disks to create & attach to the virtual machine. | <pre>map(<br>    object(<br>      {<br>        storage_account_type = string,<br>        disk_create_option   = string,<br>        disk_size_gb         = string,<br>        disk_lun             = string,<br>        disk_caching         = string<br>      }<br>    )<br>  )</pre> | `{}` | no |
 | <a name="input_nessus_groups"></a> [nessus\_groups](#input\_nessus\_groups) | The Tenable Nessus groups. | `string` | `""` | no |
 | <a name="input_nessus_install"></a> [nessus\_install](#input\_nessus\_install) | Install Tenable Nessus on the virtual machine. | `string` | `false` | no |
 | <a name="input_nessus_key"></a> [nessus\_key](#input\_nessus\_key) | The key to use when communicating with Tenable Nessus. | `string` | `""` | no |
