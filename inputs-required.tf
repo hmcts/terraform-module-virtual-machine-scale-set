@@ -1,6 +1,10 @@
 variable "vm_type" {
   type        = string
   description = "The type of the vm scale set, either windows-scale-set or linux-scale-set"
+  validation {
+    condition     = contains(["windows-scale-set", "linux-scale-set"], lower(var.vm_type))
+    error_message = "Unknown VM type. Must be either 'windows-scale-set' or 'linux-scale-set'"
+  }
 }
 
 variable "vm_name" {
@@ -18,7 +22,9 @@ variable "vm_admin_password" {
   sensitive   = true
   description = "The Admin password for the virtual Machine Scale Set."
 }
-
+variable "environment" {
+  default = "ENTER_ENVIRONMENT"
+}
 variable "vm_publisher_name" {
   type        = string
   description = "The publiser of the marketplace image to use."
@@ -64,7 +70,6 @@ variable "vm_instances" {
   description = "Number of VM instances required"
 }
 
-
 variable "computer_name_prefix" {
   type        = string
   description = "Enter Computer name prefix, it should be not more than 9 characters"
@@ -73,4 +78,3 @@ variable "tags" {
   type        = map(string)
   description = "The tags to apply to the virtual Machine Scale Set and associated resources."
 }
-

@@ -1,5 +1,5 @@
 resource "azurerm_windows_virtual_machine_scale_set" "windows_scale_set" {
-  count                = var.vm_type == "windows-scale-set" ? 1 : 0
+  count                = lower(var.vm_type) == "windows-scale-set" ? 1 : 0
   name                 = var.vm_name
   resource_group_name  = var.vm_resource_group
   location             = var.vm_location
@@ -11,6 +11,9 @@ resource "azurerm_windows_virtual_machine_scale_set" "windows_scale_set" {
   custom_data          = var.custom_data
   computer_name_prefix = var.computer_name_prefix
   upgrade_mode         = var.upgrade_mode
+
+  tags = var.tags
+
   source_image_reference {
     publisher = var.vm_publisher_name
     offer     = var.vm_offer
@@ -73,7 +76,7 @@ resource "azurerm_windows_virtual_machine_scale_set" "windows_scale_set" {
 
 
 resource "azurerm_linux_virtual_machine_scale_set" "linux_scale_set" {
-  count                = var.vm_type == "linux-scale-set" ? 1 : 0
+  count                = lower(var.vm_type) == "linux-scale-set" ? 1 : 0
   name                 = var.vm_name
   resource_group_name  = var.vm_resource_group
   location             = var.vm_location
@@ -85,6 +88,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "linux_scale_set" {
   custom_data          = var.custom_data
   computer_name_prefix = var.computer_name_prefix
   upgrade_mode         = var.upgrade_mode
+  tags                 = var.tags
   source_image_reference {
     publisher = var.vm_publisher_name
     offer     = var.vm_offer
