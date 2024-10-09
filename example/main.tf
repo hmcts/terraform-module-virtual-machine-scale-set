@@ -6,6 +6,7 @@ module "windows-vm-ss" {
     azurerm     = azurerm
     azurerm.cnp = azurerm.cnp
     azurerm.soc = azurerm.soc
+    azurerm.dcr = azurerm.dcr
   }
 
   vm_type              = "windows-scale-set"

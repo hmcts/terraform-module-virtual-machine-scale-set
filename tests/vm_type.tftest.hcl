@@ -2,6 +2,7 @@
 
 provider "azurerm" {
   features {}
+  subscription_id = "64b1c6d6-1481-44ad-b620-d8fe26a2c768"
 }
 
 provider "azurerm" {
@@ -17,7 +18,12 @@ provider "azurerm" {
   subscription_id            = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
   skip_provider_registration = true
 }
-
+provider "azurerm" {
+  features {}
+  alias                      = "dcr"
+  skip_provider_registration = "true"
+  subscription_id            = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
+}
 # Default variables for this test
 variables {
   vm_name              = "example-vm"
@@ -68,7 +74,9 @@ run "linux_vm" {
       nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
         primary        = true,
         ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
-        subnet_id      = run.setup.subnet
+        subnet_id      = run.setup.subnet,
+        load_balancer_backend_address_pool_ids = [],
+        load_balancer_inbound_nat_rules_ids    = []
       }
     }
   }
@@ -100,7 +108,9 @@ run "linux_vm_sensitivity" {
       nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
         primary        = true,
         ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
-        subnet_id      = run.setup.subnet
+        subnet_id      = run.setup.subnet,
+        load_balancer_backend_address_pool_ids = [],
+        load_balancer_inbound_nat_rules_ids    = []
       }
     }
   }
@@ -132,7 +142,9 @@ run "windows_vm" {
       nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
         primary        = true,
         ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
-        subnet_id      = run.setup.subnet
+        subnet_id      = run.setup.subnet,
+        load_balancer_backend_address_pool_ids = [],
+        load_balancer_inbound_nat_rules_ids    = []
       }
     }
   }
@@ -164,7 +176,9 @@ run "windows_vm_case_sensitivity" {
       nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
         primary        = true,
         ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
-        subnet_id      = run.setup.subnet
+        subnet_id      = run.setup.subnet,
+        load_balancer_backend_address_pool_ids = [],
+        load_balancer_inbound_nat_rules_ids    = []
       }
     }
   }
@@ -195,7 +209,9 @@ run "unknown_vm" {
       nic0 = { name = "test-nic-vmss-nonprod-uksouth-nic",
         primary        = true,
         ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig",
-        subnet_id      = run.setup.subnet
+        subnet_id      = run.setup.subnet,
+        load_balancer_backend_address_pool_ids = [],
+        load_balancer_inbound_nat_rules_ids    = []
       }
     }
   }

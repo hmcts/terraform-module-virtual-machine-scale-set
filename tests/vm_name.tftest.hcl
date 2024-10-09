@@ -2,6 +2,7 @@
 
 provider "azurerm" {
   features {}
+  subscription_id = "64b1c6d6-1481-44ad-b620-d8fe26a2c768"
 }
 
 provider "azurerm" {
@@ -17,7 +18,12 @@ provider "azurerm" {
   subscription_id            = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
   skip_provider_registration = true
 }
-
+provider "azurerm" {
+  features {}
+  alias                      = "dcr"
+  skip_provider_registration = "true"
+  subscription_id            = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
+}
 # Default variables for this test
 variables {
   env                  = "nonprod"
@@ -33,12 +39,15 @@ variables {
   vm_image_sku         = "2022-Datacenter"
   vm_instances         = "2"
   computer_name_prefix = "test-vm"
-
+ 
   network_interfaces = {
     nic0 = {
       name           = "test-nic-vmss-nonprod-uksouth-nic"
       primary        = true
       ip_config_name = "test-nic-vmss-nonprod-uksouth-ipconfig"
+      subnet_id                              = "/subscriptions/64b1c6d6-1481-44ad-b620-d8fe26a2c768/resourceGroups/vm-module-scale-set-test-rg/providers/Microsoft.Network/virtualNetworks/vm-module-test-vnet/subnets/vm-module-test-subnet",
+      load_balancer_backend_address_pool_ids = [],
+      load_balancer_inbound_nat_rules_ids    = []
     }
   }
 }
