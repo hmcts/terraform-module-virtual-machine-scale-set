@@ -71,7 +71,7 @@ resource "azurerm_windows_virtual_machine_scale_set" "windows_scale_set" {
     }
   }
 
-  tags = var.tags
+
 }
 
 
